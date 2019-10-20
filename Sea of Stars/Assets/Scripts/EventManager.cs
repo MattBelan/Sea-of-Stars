@@ -32,7 +32,7 @@ public class EventManager : MonoBehaviour
     void CauseEvent()
     {
         // Choose a type
-        int eventType = Random.Range(0, 3);
+        int eventType = Random.Range(0, 4);
 
         switch(eventType)
         {
@@ -41,11 +41,11 @@ public class EventManager : MonoBehaviour
                 break;
             case 1:
                 // Fuel
-                gameManager.fuel += GetEventAmount(gameManager.fuel);
+                gameManager.fuelCount += GetEventAmount(gameManager.fuelCount);
                 break;
             case 2:
                 // Food
-                gameManager.food += GetEventAmount(gameManager.food);
+                gameManager.foodCount += GetEventAmount(gameManager.foodCount);
                 break;
             case 3:
                 // Crew
@@ -54,7 +54,7 @@ public class EventManager : MonoBehaviour
                 break;
             case 4:
                 // Luminosity
-                gameManager.luminosity += GetEventAmount(gameManager.luminosity);
+                gameManager.luminosityCount += GetEventAmount(gameManager.luminosityCount);
                 break;
         }
     }
