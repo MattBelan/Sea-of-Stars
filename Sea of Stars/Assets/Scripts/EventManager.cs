@@ -31,7 +31,7 @@ public class EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.frameCount % 240 == 0)
+        if(Time.frameCount % 720 == 0)
         {
             CauseEvent();
         }   

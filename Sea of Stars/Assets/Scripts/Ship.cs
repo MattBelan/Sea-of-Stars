@@ -7,11 +7,14 @@ public class Ship : MonoBehaviour
     public float speed;
     public GameManager gm;
     Vector3 direction;
+    //boolean variable to track if ship is currently moving for fuel consumption
+    public bool moving;
 
     // Start is called before the first frame update
     void Start()
     {
         direction = new Vector3();
+        moving = false;
     }
 
     // Update is called once per frame
@@ -31,6 +34,15 @@ public class Ship : MonoBehaviour
         if (horiAxis != 0)
         {
             newPos.x += horiAxis * speed;
+        }
+
+        if(vertAxis != 0 || horiAxis != 0)
+        {
+            moving = true;
+        }
+        else
+        {
+            moving = false;
         }
 
         //setting ship angle and changing posiiton

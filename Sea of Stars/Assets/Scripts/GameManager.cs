@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     public GameObject luminosityTextObj;
     public GameObject eventTextObj;
 
+    [Header("Player Reference")]
+    public Ship player;
+
+    private int foodCost;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +46,19 @@ public class GameManager : MonoBehaviour
             foodTextObj.GetComponent<Text>().text = "Food: " + foodCount;
             crewTextObj.GetComponent<Text>().text = "Crew " + crewCount;
             luminosityTextObj.GetComponent<Text>().text = "Luminosity: " + luminosityCount;
+        }
+
+        foodCost = 1 + crewCount;
+
+        if (Time.frameCount % 480 == 0)
+        {
+            foodCount = foodCount - foodCost;
+            Debug.Log("Food decrease");
+            if (player.moving)
+            {
+                fuelCount--;
+                Debug.Log("Fuel decrease");
+            }
         }
     }
 

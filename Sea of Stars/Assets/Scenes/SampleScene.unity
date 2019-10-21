@@ -887,6 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.1
   gm: {fileID: 1555650069}
+  moving: 0
 --- !u!4 &666979421
 Transform:
   m_ObjectHideFlags: 0
@@ -2022,6 +2023,7 @@ MonoBehaviour:
   crewTextObj: {fileID: 1582032106}
   luminosityTextObj: {fileID: 301646192}
   eventTextObj: {fileID: 526803606}
+  player: {fileID: 666979420}
 --- !u!1 &1582032106
 GameObject:
   m_ObjectHideFlags: 0
