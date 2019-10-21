@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Resource Data")]
     // Food for thought: Condense these as a Vector3 called 'shipStats'?
     public int fuelCount = 10; // This is separate to prevent the header from appearing above all 3 attributes
-    public int foodCount = 10, luminosityCount = 10;
+    public int foodCount = 10, luminosityCount = 10, minLuminosity = 0;
 
     [Header("Crew Data")]
     public int crewCount = 0;
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject foodTextObj;
     public GameObject crewTextObj;
     public GameObject luminosityTextObj;
+    public GameObject eventTextObj;
 
     // Start is called before the first frame update
     void Start()
@@ -41,5 +42,11 @@ public class GameManager : MonoBehaviour
             crewTextObj.GetComponent<Text>().text = "Crew " + crewCount;
             luminosityTextObj.GetComponent<Text>().text = "Luminosity: " + luminosityCount;
         }
+    }
+
+    // Updates the UI in response to an event
+    public void AnnounceEvent(string message)
+    {
+        eventTextObj.GetComponent<Text>().text = message;
     }
 }
