@@ -43,6 +43,11 @@ public class CombatEntity : MonoBehaviour
     {
         if (AttackReady)
         {
+            if(target.Health <= 0.0f)
+            {
+                Debug.Log("Enemy is defeated");
+                return;
+            }
             AttackReady = false;
             prevTime = Time.time;
             target.TakeDamage(Damage);

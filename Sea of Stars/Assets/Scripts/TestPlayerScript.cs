@@ -6,7 +6,9 @@ public class TestPlayerScript : MonoBehaviour
 {
     public GameObject foodBar;
     public GameObject energyBar;
-    public GameObject directionBar;
+
+    public CombatEntity ship;
+    public CombatEntity enemy;
 
     float energy;
     float food;
@@ -21,7 +23,6 @@ public class TestPlayerScript : MonoBehaviour
     {
         energy = 0;
         food = 0;
-        direction = 0;
         lastGatherTime = 0;
         currRoom = "cabin";
     }
@@ -35,25 +36,44 @@ public class TestPlayerScript : MonoBehaviour
 
             switch (currRoom)
             {
-                case "engine":
+                case "storage":
+                    //added ceiling for ship variables here, will have to change with specialists
+                    if (energy >= 100.0f)
+                    {
+                        energy = 100.0f;
+                        break;
+                    }
                     energy += 4;
                     break;
 
-                case "kitchen":
+                case "Galley":
+                    if (food >= 100.0f)
+                    {
+                        food = 100.0f;
+                        break;
+                    }
                     food += 4;
                     break;
 
-                case "cabin":
-                    direction += 4;
+                case "EngineRoom":
+                    if (ship.Health >= 20.0f)
+                    {
+                        ship.Health = 20.0f;
+                        break;
+                    }
+                    ship.Health += 0.25f;
+                    break;
+
+                case "WeaponStation":
+                    ship.Attack(enemy);
                     break;
 
                 default:
                     break;
             }
 
-            energy -= 1;
-            food -= 1;
-            direction -= 1;
+            energy -= 2;
+            food -= 2;
 
             if (energy < 0)
             {
@@ -62,10 +82,6 @@ public class TestPlayerScript : MonoBehaviour
             if (food < 0)
             {
                 food = 0;
-            }
-            if(direction < 0)
-            {
-                direction = 0;
             }
         }
 
@@ -76,10 +92,6 @@ public class TestPlayerScript : MonoBehaviour
         Vector3 energyScale = energyBar.transform.localScale;
         energyScale.x = energy / 100;
         energyBar.transform.localScale = energyScale;
-
-        Vector3 directionScale = directionBar.transform.localScale;
-        directionScale.x = direction / 100;
-        directionBar.transform.localScale = directionScale;
 
     }
 }

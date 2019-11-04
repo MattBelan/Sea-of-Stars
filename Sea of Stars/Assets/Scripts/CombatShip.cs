@@ -18,6 +18,11 @@ public class CombatShip : CombatEntity
     public override void Update()
     {
         base.Update();
+        if(Health <= 2)
+        {
+            Debug.Log("Crisis event");
+
+        }
     }
 
     public void Repair(float val)
