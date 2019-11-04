@@ -29,7 +29,7 @@ public class CrewManager : MonoBehaviour
     // Adds a sailor to the crew
     public void RecruitCrew(bool isSpecialist = false)
     {
-        // Get an index for the crew member's name
+        // Pick a random name and role for the crew member being added
         int nameNum = Random.Range(0, crewNames.Count - 1);
         int roleNum = Random.Range(0, 4);
 

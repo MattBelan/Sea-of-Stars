@@ -18,6 +18,4 @@ public class CrewMember
         role = rl;
         isSpecialist = sp;
     }
-
-
 }
