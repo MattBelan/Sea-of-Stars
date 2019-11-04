@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Child class: Defines the functions of the galley of the ship
+ */
 public class Galley : Room
 {
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
@@ -17,7 +19,7 @@ public class Galley : Room
     }
 
     // 
-    void PrepareFood()
+    public void PrepareFood()
     {
         Debug.Log("Preparing food");
     }

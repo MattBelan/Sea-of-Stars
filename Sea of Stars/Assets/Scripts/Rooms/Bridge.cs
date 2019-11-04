@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Child class: Defines functions of the bridge of the ship
+ */
 public class Bridge : Room
 {
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
@@ -17,7 +19,7 @@ public class Bridge : Room
     }
 
     // 
-    void Navigate()
+    public void Navigate()
     {
         Debug.Log("Plotting our course");
     }
