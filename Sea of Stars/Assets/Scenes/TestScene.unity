@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 25935819}
   - component: {fileID: 25935818}
   m_Layer: 0
-  m_Name: Medbay
+  m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,11 +163,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 25935816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b76d60b81a126438d42c93003cdb87, type: 3}
+  m_Script: {fileID: 11500000, guid: 91344c2deb1c9af4ba7b11a83a1554f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1027899899}
-  roomName: medbay
+  roomName: Magazine
+  hasSpecialist: 0
 --- !u!65 &25935819
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -422,7 +423,7 @@ GameObject:
   - component: {fileID: 186923233}
   - component: {fileID: 186923232}
   m_Layer: 0
-  m_Name: Fishery
+  m_Name: WeaponStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,11 +452,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 186923230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b76d60b81a126438d42c93003cdb87, type: 3}
+  m_Script: {fileID: 11500000, guid: eafaecc21c2d51a46be24d9dd73ac697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1027899899}
-  roomName: fishery
+  roomName: WeaponStation
+  hasSpecialist: 0
 --- !u!65 &186923233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -881,6 +883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1027899899}
   roomName: storage
+  hasSpecialist: 0
 --- !u!65 &613089110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1093,9 +1096,9 @@ GameObject:
   - component: {fileID: 951229761}
   - component: {fileID: 951229760}
   - component: {fileID: 951229759}
-  - component: {fileID: 951229758}
+  - component: {fileID: 951229762}
   m_Layer: 0
-  m_Name: Cabin
+  m_Name: Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,20 +1118,6 @@ Transform:
   m_Father: {fileID: 888243928}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &951229758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951229756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b76d60b81a126438d42c93003cdb87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1027899899}
-  roomName: cabin
 --- !u!65 &951229759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1187,6 +1176,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951229756}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &951229762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951229756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9455393d7ec63d346a2e8a777083ae87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1027899899}
+  roomName: Bridge
+  hasSpecialist: 0
 --- !u!1 &1013848708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,7 +1496,7 @@ GameObject:
   - component: {fileID: 1326000471}
   - component: {fileID: 1326000470}
   m_Layer: 0
-  m_Name: Engine
+  m_Name: EngineRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1521,11 +1525,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1326000468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b76d60b81a126438d42c93003cdb87, type: 3}
+  m_Script: {fileID: 11500000, guid: 062336d2e0717a54ea1496687f25dc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1027899899}
-  roomName: engine
+  roomName: EngineRoom
+  hasSpecialist: 0
 --- !u!65 &1326000471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1871,7 +1876,7 @@ GameObject:
   - component: {fileID: 1517554646}
   - component: {fileID: 1517554645}
   m_Layer: 0
-  m_Name: Kitchen
+  m_Name: Galley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1900,11 +1905,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517554643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b76d60b81a126438d42c93003cdb87, type: 3}
+  m_Script: {fileID: 11500000, guid: b8e01cc0909aeec458fabff31eb7b20e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1027899899}
-  roomName: kitchen
+  roomName: Galley
+  hasSpecialist: 0
 --- !u!65 &1517554646
 BoxCollider:
   m_ObjectHideFlags: 0
