@@ -22,4 +22,14 @@ public class StaticCircle : MonoBehaviour
     {
         GetComponent<Renderer>().material = success;
     }
+
+    public void Hide()
+    {
+        GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    public void Show()
+    {
+       GetComponent<MeshRenderer>().enabled = true;
+    }
 }

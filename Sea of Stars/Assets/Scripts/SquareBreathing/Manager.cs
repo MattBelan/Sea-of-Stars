@@ -9,6 +9,9 @@ public class Manager : MonoBehaviour
     public Movable M2;
     public StaticCircle S2;
 
+    public StaticCircle H1;
+    public StaticCircle H2;
+
     public SuccessBounds Success1;
     public SuccessBounds Success2;
 
@@ -25,9 +28,12 @@ public class Manager : MonoBehaviour
     {
         m1Moved = false;
         m2Moved = false;
+        s1Moved = false;
+        s2Moved = false;
         m1X = M1.transform.position.x;
         m2X = M2.transform.position.x;
         M2.canMove = false;
+        H2.Hide();
     }
 
     // Update is called once per frame
@@ -37,10 +43,8 @@ public class Manager : MonoBehaviour
         Vector3 newM2Pos = new Vector3(m2X, M2.transform.position.y, M2.transform.position.z);
         Vector3 newS1Pos;
         Vector3 newS2Pos;
-
-        Vector3 mouse = Input.mousePosition;
-        mouse.z = 10.0f;
-        mouse = Camera.main.ScreenToWorldPoint(mouse);
+        Vector3 newH1Pos = H1.transform.position;
+        Vector3 newH2Pos = H2.transform.position;
 
         //checking bounds and end conditions on movables
         if (newM1Pos.y > 4.0f)
@@ -55,6 +59,7 @@ public class Manager : MonoBehaviour
         {
             if (newM1Pos.y == -4.0f)
             {
+                //Success, change to in bounds rather than coords later
                 M1.canMove = false;
                 M1.ChangeMaterial();
                 m1Moved = true;
@@ -80,6 +85,7 @@ public class Manager : MonoBehaviour
             }
         }
 
+        //Handling the static circles not controlled by the player
         if (m1Moved)
         {
             newS1Pos = new Vector3(S1.transform.position.x - 0.05f, S1.transform.position.y, 1);
@@ -87,6 +93,7 @@ public class Manager : MonoBehaviour
             {
                 newS1Pos.x = -4.0f;
                 S1.ChangeMaterial();
+                s1Moved = true;
             }
         }
         else
@@ -102,6 +109,7 @@ public class Manager : MonoBehaviour
             {
                 newS2Pos.x = 4.0f;
                 S2.ChangeMaterial();
+                s2Moved = true;
             }
         }
         else
@@ -109,11 +117,48 @@ public class Manager : MonoBehaviour
             newS2Pos = S2.transform.position;
         }
 
+        //handling hints circles
+        if (!m1Moved)
+        {
+            newH1Pos = new Vector3(H1.transform.position.x, H1.transform.position.y - 0.05f, 1);
+            if (newH1Pos.y <= -4.0f)
+            {
+                newH1Pos.y = 4.0f;
+            }
+        }
+        else
+        {
+            H1.Hide();
+        }
 
+        if (s1Moved)
+        {
+            H2.Show();
+
+            if (!m2Moved)
+            {
+                newH2Pos = new Vector3(H2.transform.position.x, H2.transform.position.y + 0.05f, 1);
+                if (newH2Pos.y >= 4.0f)
+                {
+                    newH2Pos.y = -4.0f;
+                }
+            }
+            else
+            {
+                H2.Hide();
+            }
+        }
+
+        if (s2Moved)
+        {
+            //Minigame win, return to main game screen
+        }
+        
         M1.transform.position = newM1Pos;
         S1.transform.position = newS1Pos;
         M2.transform.position = newM2Pos;
         S2.transform.position = newS2Pos;
-
+        H1.transform.position = newH1Pos;
+        H2.transform.position = newH2Pos;
     }
 }
