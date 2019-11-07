@@ -57,13 +57,18 @@ public class Manager : MonoBehaviour
         }
         else
         {
-            if (newM1Pos.y == -4.0f)
+            if (newM1Pos.y >= 3.75f)
             {
                 //Success, change to in bounds rather than coords later
+                newM1Pos.y = 4.0f;
                 M1.canMove = false;
                 M1.ChangeMaterial();
                 m1Moved = true;
                 M2.canMove = true;
+            }
+            else if (newM1Pos.y > H1.transform.position.y + 0.75f || newM1Pos.y < H1.transform.position.y - 0.75f)
+            {
+                newM1Pos.y = -4.0f;
             }
         }
 
@@ -77,11 +82,16 @@ public class Manager : MonoBehaviour
         }
         else
         {
-            if (newM2Pos.y == 4.0f)
+            if (newM2Pos.y <= -3.75f)
             {
+                newM2Pos.y = -4.0f;
                 M2.canMove = false;
                 M2.ChangeMaterial();
                 m2Moved = true;
+            }
+            else if (newM2Pos.y > H2.transform.position.y + 0.75f || newM2Pos.y < H2.transform.position.y - 0.75f)
+            {
+                newM1Pos.y = 4.0f;
             }
         }
 
@@ -120,10 +130,10 @@ public class Manager : MonoBehaviour
         //handling hints circles
         if (!m1Moved)
         {
-            newH1Pos = new Vector3(H1.transform.position.x, H1.transform.position.y - 0.05f, 1);
-            if (newH1Pos.y <= -4.0f)
+            newH1Pos = new Vector3(H1.transform.position.x, H1.transform.position.y + 0.05f, 1);
+            if (newH1Pos.y >= 4.0f)
             {
-                newH1Pos.y = 4.0f;
+                newH1Pos.y = -4.0f;
             }
         }
         else
@@ -137,10 +147,10 @@ public class Manager : MonoBehaviour
 
             if (!m2Moved)
             {
-                newH2Pos = new Vector3(H2.transform.position.x, H2.transform.position.y + 0.05f, 1);
-                if (newH2Pos.y >= 4.0f)
+                newH2Pos = new Vector3(H2.transform.position.x, H2.transform.position.y - 0.05f, 1);
+                if (newH2Pos.y <= -4.0f)
                 {
-                    newH2Pos.y = -4.0f;
+                    newH2Pos.y = 4.0f;
                 }
             }
             else
