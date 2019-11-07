@@ -39,7 +39,7 @@ public class CombatEntity : MonoBehaviour
         Debug.Log(ID + " now has " + Health + " Health");
     }
 
-    public void Attack(CombatEntity target)
+    public virtual void Attack(CombatEntity target)
     {
         if (AttackReady)
         {

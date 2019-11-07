@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CombatShip : CombatEntity
 {
+    public List<ShipRoom> rooms;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -23,6 +24,9 @@ public class CombatShip : CombatEntity
             Debug.Log("Crisis event");
 
         }
+
+        FireRate = 5 * (1 / rooms[3].roomModifier);
+        Damage = 2 * rooms[4].roomModifier;
     }
 
     public void Repair(float val)
@@ -36,5 +40,10 @@ public class CombatShip : CombatEntity
         {
             Repair(1);
         }
+    }
+
+    public void DamageRoom(float dam)
+    {
+        rooms[Random.Range(0, 4)].health -= dam;
     }
 }

@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 25935820}
   - component: {fileID: 25935819}
   - component: {fileID: 25935818}
+  - component: {fileID: 25935822}
   m_Layer: 0
   m_Name: Magazine
   m_TagString: Untagged
@@ -231,6 +232,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25935816}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &25935822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25935816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1000c42dcc57b41902cee5d159085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  maxHealth: 4
+  roomModifier: 0
 --- !u!1 &145386059
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +442,7 @@ GameObject:
   - component: {fileID: 186923234}
   - component: {fileID: 186923233}
   - component: {fileID: 186923232}
+  - component: {fileID: 186923236}
   m_Layer: 0
   m_Name: WeaponStation
   m_TagString: Untagged
@@ -524,6 +541,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186923230}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &186923236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186923230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1000c42dcc57b41902cee5d159085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  maxHealth: 4
+  roomModifier: 0
 --- !u!1 &255910837
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,6 +693,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: Ship
+  rooms:
+  - {fileID: 613089113}
+  - {fileID: 1326000474}
+  - {fileID: 1517554649}
+  - {fileID: 25935822}
+  - {fileID: 186923236}
+  - {fileID: 951229758}
 --- !u!1 &311605897
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +961,7 @@ GameObject:
   - component: {fileID: 613089111}
   - component: {fileID: 613089110}
   - component: {fileID: 613089109}
+  - component: {fileID: 613089113}
   m_Layer: 0
   m_Name: Storage
   m_TagString: Untagged
@@ -1020,6 +1060,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613089107}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &613089113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613089107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1000c42dcc57b41902cee5d159085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  maxHealth: 4
+  roomModifier: 0
 --- !u!1 &630200726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1388,7 @@ GameObject:
   - component: {fileID: 951229760}
   - component: {fileID: 951229759}
   - component: {fileID: 951229762}
+  - component: {fileID: 951229758}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Untagged
@@ -1354,6 +1410,21 @@ Transform:
   m_Father: {fileID: 888243928}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &951229758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951229756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1000c42dcc57b41902cee5d159085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  maxHealth: 4
+  roomModifier: 0
 --- !u!65 &951229759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1890,6 +1961,7 @@ GameObject:
   - component: {fileID: 1326000472}
   - component: {fileID: 1326000471}
   - component: {fileID: 1326000470}
+  - component: {fileID: 1326000474}
   m_Layer: 0
   m_Name: EngineRoom
   m_TagString: Untagged
@@ -1988,6 +2060,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326000468}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1326000474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326000468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1000c42dcc57b41902cee5d159085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  maxHealth: 4
+  roomModifier: 0
 --- !u!1 &1334219979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,6 +2440,7 @@ GameObject:
   - component: {fileID: 1517554647}
   - component: {fileID: 1517554646}
   - component: {fileID: 1517554645}
+  - component: {fileID: 1517554649}
   m_Layer: 0
   m_Name: Galley
   m_TagString: Untagged
@@ -2451,6 +2539,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517554643}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1517554649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517554643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1000c42dcc57b41902cee5d159085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  maxHealth: 4
+  roomModifier: 0
 --- !u!1 &1583498350
 GameObject:
   m_ObjectHideFlags: 0
