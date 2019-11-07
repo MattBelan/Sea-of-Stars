@@ -27,6 +27,15 @@ public class CombatEnemy : CombatEntity
         }
     }
 
+    public override void Attack(CombatEntity target)
+    {
+        if (AttackReady)
+        {
+            ship.DamageRoom(Damage);
+        }
+        base.Attack(target);
+    }
+
     public void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
