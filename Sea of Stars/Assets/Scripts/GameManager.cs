@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 /*
- * Authors: Jordan Machalek
  * Holds key game data and methods
  */
 public class GameManager : MonoBehaviour
