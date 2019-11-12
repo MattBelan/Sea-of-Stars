@@ -5,6 +5,16 @@ using UnityEngine;
 public class CombatShip : CombatEntity
 {
     public List<ShipRoom> rooms;
+    public bool shieldActive;
+    float prevShield;
+    float prevStun;
+    public bool stunActive;
+
+    public float stress { get; set; }
+    private bool pillReady;
+    private bool pillTaken;
+    private float prevPill;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -13,6 +23,13 @@ public class CombatShip : CombatEntity
         Damage = 2;
         FireRate = 5;
         AttackReady = true;
+        shieldActive = false;
+        pillReady = true;
+        pillTaken = false;
+        prevShield = 0;
+        prevStun = 0;
+        prevPill = 0;
+        stress = 0;
     }
 
     // Update is called once per frame
@@ -27,6 +44,24 @@ public class CombatShip : CombatEntity
 
         FireRate = 5 * (1 / rooms[3].roomModifier);
         Damage = 2 * rooms[4].roomModifier;
+
+        if (Time.time - prevShield > 3)
+        {
+            shieldActive = false;
+        }
+        if(Time.time - prevStun > 4)
+        {
+            stunActive = false;
+        }
+        if(Time.time - prevPill > 5)
+        {
+            pillTaken = false;
+        }
+
+        if(Time.time - prevPill > 10)
+        {
+            pillReady = true;
+        }
     }
 
     public void Repair(float val)
@@ -45,5 +80,69 @@ public class CombatShip : CombatEntity
     public void DamageRoom(float dam)
     {
         rooms[Random.Range(0, 4)].health -= dam;
+    }
+
+    public void ActivateShield()
+    {
+        shieldActive = true;
+        prevShield = Time.time;
+    }
+
+    public override void TakeDamage(float dam)
+    {
+        if (!shieldActive)
+        {
+            base.TakeDamage(dam);
+            stress += 5;
+        }
+        else
+        {
+            stress += 2;
+        }
+    }
+
+    public override void Attack(CombatEntity target)
+    {
+        base.Attack(target);
+
+        if (stunActive)
+        {
+            target.ResetAttackTimer();
+        }
+    }
+
+    public void ActivateStunner()
+    {
+        stunActive = true;
+        prevStun = Time.time;
+    }
+
+    public void ReduceStressTherapist()
+    {
+        //require combat to be inactive
+        if (pillTaken)
+        {
+            stress = stress - 30;
+        }
+        stress = stress - 20;
+        if(stress < 0)
+        {
+            stress = 0;
+        }
+    }
+
+    public void ReduceStressPill()
+    {
+        if (pillReady)
+        {
+            pillTaken = true;
+            pillReady = false;
+            prevPill = Time.time;
+            stress = stress - 10;
+            if (stress < 0)
+            {
+                stress = 0;
+            }
+        }
     }
 }

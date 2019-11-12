@@ -24,7 +24,7 @@ public class TestPlayerScript : MonoBehaviour
         energy = 0;
         food = 0;
         lastGatherTime = 0;
-        currRoom = "cabin";
+        currRoom = "Bridge";
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class TestPlayerScript : MonoBehaviour
 
             switch (currRoom)
             {
-                case "storage":
+                case "Storage":
                     //added ceiling for ship variables here, will have to change with specialists
                     if (energy >= 100.0f)
                     {

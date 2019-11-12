@@ -33,7 +33,7 @@ public class CombatEntity : MonoBehaviour
 
     }
 
-    public void TakeDamage(float dam)
+    public virtual void TakeDamage(float dam)
     {
         Health -= dam;
         Debug.Log(ID + " now has " + Health + " Health");
@@ -60,5 +60,10 @@ public class CombatEntity : MonoBehaviour
                 Debug.Log(ID + " Attack Cooldown: " + (FireRate - (Time.time - prevTime)));
             }
         }
+    }
+
+    public void ResetAttackTimer()
+    {
+        prevTime = Time.time;
     }
 }

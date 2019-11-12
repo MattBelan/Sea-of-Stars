@@ -10,9 +10,10 @@ public class UIManager : MonoBehaviour
     public GameObject energyTextObj;
     public GameObject healthTextObj;
     public GameObject enemyHealthTextObj;
+    public GameObject stressTextObj;
 
     public TestPlayerScript player;
-    public CombatEntity ship;
+    public CombatShip ship;
     public CombatEntity enemy;
 
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class UIManager : MonoBehaviour
             roomTextObj.GetComponent<Text>().text = "Current Room: " + player.currRoom;
             healthTextObj.GetComponent<Text>().text = "Health: " + ship.Health;
             enemyHealthTextObj.GetComponent<Text>().text = "Health: " + enemy.Health;
+            stressTextObj.GetComponent<Text>().text = "Stress: " + ship.stress;
         }
     }
 }
