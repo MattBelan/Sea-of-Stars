@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TestPlayerScript : MonoBehaviour
 {
+    // Attributes
+    public GameManager gameManager;
+
     public GameObject foodBar;
     public GameObject energyBar;
 
@@ -12,7 +15,8 @@ public class TestPlayerScript : MonoBehaviour
 
     float energy;
     float food;
-    float direction;
+    float stress; // 0-100 scale
+    //float direction;
 
     public string currRoom;
 
@@ -21,6 +25,8 @@ public class TestPlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!gameManager) gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         energy = 0;
         food = 0;
         lastGatherTime = 0;
@@ -30,6 +36,12 @@ public class TestPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if stress levels are too high
+        if(stress > 50)
+        {
+
+        }
+
         if(Time.time - lastGatherTime > gatherInterval)
         {
             lastGatherTime = Time.time;
