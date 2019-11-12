@@ -5,24 +5,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Text Objects")]
     public GameObject roomTextObj;
     public GameObject foodTextObj;
     public GameObject energyTextObj;
     public GameObject healthTextObj;
     public GameObject enemyHealthTextObj;
     public GameObject stressTextObj;
-
-    [Header("Dialogue Text Objects")]
-    public GameObject playerTextObj;
-    public GameObject weaponTextObj;
-    public GameObject magazineTextObj;
-    public GameObject galleyTextObj;
-    public GameObject storageTextObj;
-    public GameObject engineTextObj;
-
-    [Header("Button Objects")]
-    public GameObject sosButton;
 
     public TestPlayerScript player;
     public CombatShip ship;
@@ -45,11 +33,5 @@ public class UIManager : MonoBehaviour
             enemyHealthTextObj.GetComponent<Text>().text = "Health: " + enemy.Health;
             stressTextObj.GetComponent<Text>().text = "Stress: " + ship.stress;
         }
-    }
-
-    // Updates the UI in response to an event
-    public void AnnounceEvent(string message)
-    {
-
     }
 }

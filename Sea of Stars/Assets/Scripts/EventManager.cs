@@ -49,7 +49,7 @@ public class EventManager : MonoBehaviour
             case 0:
                 // No Event
                 Debug.Log("No event");
-                //gameManager.AnnounceEvent("");
+                gameManager.AnnounceEvent("");
                 break;
             case 1:
                 // Fuel
@@ -58,7 +58,7 @@ public class EventManager : MonoBehaviour
                 gameManager.fuelCount += amount;
 
                 // Update UI
-                //gameManager.AnnounceEvent(fuelEventText[0] + "\nChanged by " + amount);
+                gameManager.AnnounceEvent(fuelEventText[0] + "\nChanged by " + amount);
                 break;
             case 2:
                 // Food
@@ -67,7 +67,7 @@ public class EventManager : MonoBehaviour
                 gameManager.foodCount += amount;
 
                 // Update UI
-                //gameManager.AnnounceEvent(foodEventText[0] + "\nChanged by " + amount);
+                gameManager.AnnounceEvent(foodEventText[0] + "\nChanged by " + amount);
 
                 break;
             case 3:
@@ -77,18 +77,18 @@ public class EventManager : MonoBehaviour
                 amount = GetCrewEventAmount();
 
                 // === TODO: Change logic to: "if no crew to remove do nothing" - make sure to stop the message from appearing as well
-                //if (gameManager.crewCount == 0) // If there is no crew to remove, add crew instead
+                if (gameManager.crewCount == 0) // If there is no crew to remove, add crew instead
                 {
                     amount = Mathf.Abs(amount);
                 }
 
-                //gameManager.crewCount += amount;
+                gameManager.crewCount += amount;
 
                 // Add or subtract from the minimum luminosity as a crew member has been added
                 gameManager.minLuminosity += 1 * RandomSign();
 
                 // Update UI
-                //gameManager.AnnounceEvent(crewEventText[0] + "\nChanged by " + amount);
+                gameManager.AnnounceEvent(crewEventText[0] + "\nChanged by " + amount);
                 // === END TODO ======================================================
                 break;
             case 4:
@@ -98,7 +98,7 @@ public class EventManager : MonoBehaviour
                 gameManager.luminosityCount += amount;
 
                 // Update UI
-                //gameManager.AnnounceEvent(luminosityEventText[0] + "\nChanged by " + amount);
+                gameManager.AnnounceEvent(luminosityEventText[0] + "\nChanged by " + amount);
 
                 break;
         }
