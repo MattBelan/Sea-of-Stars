@@ -1454,6 +1454,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: Squid
   ship: {fileID: 303837004}
+  startLerp: {x: -2.45, y: -3.79, z: 0}
+  endLerp: {x: 3.5, y: -3.79, z: 0}
+  speed: 1
 --- !u!65 &630200728
 BoxCollider:
   m_ObjectHideFlags: 0
