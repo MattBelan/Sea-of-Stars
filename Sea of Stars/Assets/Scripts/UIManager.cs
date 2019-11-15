@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Managers")]
+    public CrewManager crewManager;
+
     [Header("Text Objects")]
     public GameObject roomTextObj;
     public GameObject foodTextObj;
@@ -27,12 +30,15 @@ public class UIManager : MonoBehaviour
 
     [Header("Button Objects")]
     public GameObject sosButton;
+    public bool showSOS;
 
     // Start is called before the first frame update
     void Start()
     {
         foodTextObj.GetComponent<Text>().text = "Food: ";
         energyTextObj.GetComponent<Text>().text = "Fuel: ";
+
+        if (!crewManager) crewManager = GetComponent<CrewManager>();
     }
 
     // Update is called once per frame
@@ -45,12 +51,25 @@ public class UIManager : MonoBehaviour
             enemyHealthTextObj.GetComponent<Text>().text = "Health: " + enemy.Health;
             stressTextObj.GetComponent<Text>().text = "Stress: " + ship.stress;
         }
-    }
 
+        if (showSOS) sosButton.SetActive(true);
+    }
 
     // Updates the UI in response to an event
     public void AnnounceEvent(string message)
     {
 
+    }
+
+    // Called when SOS button is pressed
+    public void SOS()
+    {
+        ship.stress = 0;
+
+        ship.SOSState = false;
+
+        // Hide the button again
+        showSOS = false;
+        sosButton.gameObject.SetActive(false);
     }
 }

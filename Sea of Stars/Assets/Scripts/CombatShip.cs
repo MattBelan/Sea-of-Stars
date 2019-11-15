@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class CombatShip : CombatEntity
 {
+    [Header("Managers")]
+    public UIManager uiManager;
+
     public List<ShipRoom> rooms;
     public bool shieldActive;
     float prevShield;
     float prevStun;
     public bool stunActive;
 
-    public float stress { get; set; }
+    public float stress { get; set; } // 0 - 100
     private bool pillReady;
     private bool pillTaken;
     private float prevPill;
+    public bool SOSState;
 
     // Start is called before the first frame update
     public override void Start()
@@ -30,6 +34,9 @@ public class CombatShip : CombatEntity
         prevStun = 0;
         prevPill = 0;
         stress = 0;
+        SOSState = false;
+
+        if (!uiManager) uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -61,6 +68,13 @@ public class CombatShip : CombatEntity
         if(Time.time - prevPill > 10)
         {
             pillReady = true;
+        }
+
+        // Check if stress is too high
+        if(stress >= 75 && SOSState == false)
+        {
+            SOSState = true;
+            uiManager.showSOS = true;
         }
     }
 
