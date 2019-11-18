@@ -29,38 +29,47 @@ public class CombatEnemy : CombatEntity
     {
         base.Update();
 
-        if (AttackReady)
+        if (inCombat)
         {
-            Attack(ship);
-        }
+            if (AttackReady)
+            {
+                Attack(ship);
+            }
 
-        float distCovered = (Time.time - startTime) * speed;
-        float fracJourney = distCovered / tripLength;
-        transform.position = Vector3.Lerp(startLerp, endLerp, fracJourney);
+            float distCovered = (Time.time - startTime) * speed;
+            float fracJourney = distCovered / tripLength;
+            transform.position = Vector3.Lerp(startLerp, endLerp, fracJourney);
 
-        if (fracJourney >= 1)
-        {
-            Vector3 temp = endLerp;
-            endLerp = startLerp;
-            startLerp = temp;
-            startTime = Time.time;
+            if (fracJourney >= 1)
+            {
+                Vector3 temp = endLerp;
+                endLerp = startLerp;
+                startLerp = temp;
+                startTime = Time.time;
+            }
         }
     }
 
     public override void Attack(CombatEntity target)
     {
-        if (AttackReady)
+        if (inCombat)
         {
-            ship.DamageRoom(Damage);
+            if (AttackReady)
+            {
+                ship.DamageRoom(Damage);
+            }
+            base.Attack(target);
         }
-        base.Attack(target);
     }
 
     public void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (inCombat)
         {
-            ship.Attack(this);
+            if (Input.GetMouseButtonDown(0))
+            {
+                ship.Attack(this);
+            }
         }
     }
 }

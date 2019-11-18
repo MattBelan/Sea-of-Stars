@@ -98,8 +98,11 @@ public class CombatShip : CombatEntity
 
     public void ActivateShield()
     {
-        shieldActive = true;
-        prevShield = Time.time;
+        if (inCombat)
+        {
+            shieldActive = true;
+            prevShield = Time.time;
+        }
     }
 
     public override void TakeDamage(float dam)
@@ -117,18 +120,24 @@ public class CombatShip : CombatEntity
 
     public override void Attack(CombatEntity target)
     {
-        base.Attack(target);
-
-        if (stunActive)
+        if (inCombat)
         {
-            target.ResetAttackTimer();
+            base.Attack(target);
+
+            if (stunActive)
+            {
+                target.ResetAttackTimer();
+            }
         }
     }
 
     public void ActivateStunner()
     {
-        stunActive = true;
-        prevStun = Time.time;
+        if (inCombat)
+        {
+            stunActive = true;
+            prevStun = Time.time;
+        }
     }
 
     public void ReduceStressTherapist()

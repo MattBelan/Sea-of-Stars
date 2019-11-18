@@ -14,15 +14,47 @@ public class GameManager : MonoBehaviour
 
     private int foodCost;
 
+    public bool inCombat;
+    public CombatShip ship;
+    public CombatEnemy enemy;
+
+    //used for progression
+    public int currLevel;
+
+    //used for map
+    public int currNode;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        inCombat = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ship.inCombat = inCombat;
+        enemy.inCombat = inCombat;
+
+        if (inCombat)
+        {
+            //Put combat specific function calls here
+
+        }
+        else
+        {
+            //Put non-combat specific functions here
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                //bring up map
+
+            }
+        }
+
+        //Getting out of combat
+        if (enemy.Health <= 0)
+        {
+            inCombat = false;
+        }
     }
 }
