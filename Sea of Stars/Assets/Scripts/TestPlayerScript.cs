@@ -13,9 +13,6 @@ public class TestPlayerScript : MonoBehaviour
     public CombatEntity ship;
     public CombatEntity enemy;
 
-    float energy;
-    float food;
-
     public string currRoom;
 
     public float gatherInterval;
@@ -25,8 +22,6 @@ public class TestPlayerScript : MonoBehaviour
     {
         if (!gameManager) gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        energy = 0;
-        food = 0;
         lastGatherTime = 0;
         currRoom = "Bridge";
     }
@@ -42,21 +37,21 @@ public class TestPlayerScript : MonoBehaviour
             {
                 case "Storage":
                     //added ceiling for ship variables here, will have to change with specialists
-                    if (energy >= 100.0f)
+                    if (gameManager.fuelCount >= 100)
                     {
-                        energy = 100.0f;
+                        gameManager.fuelCount = 100;
                         break;
                     }
-                    energy += 4;
+                    gameManager.fuelCount += 4;
                     break;
 
                 case "Galley":
-                    if (food >= 100.0f)
+                    if (gameManager.foodCount >= 100)
                     {
-                        food = 100.0f;
+                        gameManager.foodCount = 100;
                         break;
                     }
-                    food += 4;
+                    gameManager.foodCount += 4;
                     break;
 
                 case "EngineRoom":
@@ -76,25 +71,25 @@ public class TestPlayerScript : MonoBehaviour
                     break;
             }
 
-            energy -= 2;
-            food -= 2;
+            gameManager.fuelCount -= 1;
+            gameManager.foodCount -= 1;
 
-            if (energy < 0)
+            if (gameManager.fuelCount < 0)
             {
-                energy = 0;
+                gameManager.fuelCount = 0;
             }
-            if (food < 0)
+            if (gameManager.foodCount < 0)
             {
-                food = 0;
+                gameManager.foodCount = 0;
             }
         }
 
         Vector3 foodScale = foodBar.transform.localScale;
-        foodScale.x = food / 100;
+        foodScale.x = gameManager.foodCount / 100;
         foodBar.transform.localScale = foodScale;
 
         Vector3 energyScale = energyBar.transform.localScale;
-        energyScale.x = energy / 100;
+        energyScale.x = gameManager.fuelCount / 100;
         energyBar.transform.localScale = energyScale;
 
     }

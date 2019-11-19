@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     // Food for thought: Condense these as a Vector3 called 'shipStats'?
     public int fuelCount = 10; // This is separate to prevent the header from appearing above all 3 attributes
     public int foodCount = 10, luminosityCount = 10, minLuminosity = 0;
+    public int crewCount = 0;
 
     private int foodCost;
 
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //once specialists/crew are added up crewCount
+
         ship.inCombat = inCombat;
         enemy.inCombat = inCombat;
 
@@ -56,5 +59,8 @@ public class GameManager : MonoBehaviour
         {
             inCombat = false;
         }
+
+        //foodCount -= crewCount;
+        //for some reason subtracts 10 every frame
     }
 }

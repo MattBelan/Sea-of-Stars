@@ -6166,7 +6166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400219395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 18.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1831764933}
@@ -6781,9 +6781,10 @@ MonoBehaviour:
   foodCount: 10
   luminosityCount: 10
   minLuminosity: 0
+  crewCount: 1
   inCombat: 0
-  ship: {fileID: 0}
-  enemy: {fileID: 0}
+  ship: {fileID: 303837004}
+  enemy: {fileID: 630200727}
   currLevel: 0
   currNode: 0
 --- !u!4 &1528298243

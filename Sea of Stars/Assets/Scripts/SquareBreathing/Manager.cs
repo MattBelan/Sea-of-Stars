@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -161,7 +162,7 @@ public class Manager : MonoBehaviour
 
         if (s2Moved)
         {
-            //Minigame win, return to main game screen
+            SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
         }
         
         M1.transform.position = newM1Pos;

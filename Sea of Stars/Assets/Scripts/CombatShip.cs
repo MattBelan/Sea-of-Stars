@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CombatShip : CombatEntity
 {
@@ -46,7 +47,8 @@ public class CombatShip : CombatEntity
         if(Health <= 2)
         {
             Debug.Log("Crisis event");
-
+            SceneManager.LoadScene("SquareBreathing", LoadSceneMode.Single);
+            Health += 4;
         }
 
         FireRate = 5 * (1 / rooms[3].roomModifier);
@@ -143,15 +145,23 @@ public class CombatShip : CombatEntity
     public void ReduceStressTherapist()
     {
         //require combat to be inactive
-        if (pillTaken)
+        if (inCombat)
         {
-            stress = stress - 30;
+            if (pillTaken)
+            {
+                stress = stress - 30;
+            }
+            stress = stress - 20;
+            if (stress < 0)
+            {
+                stress = 0;
+            }
         }
-        stress = stress - 20;
-        if(stress < 0)
+        else
         {
-            stress = 0;
+            Debug.Log("Cannot undergo therapy in combat");
         }
+        
     }
 
     public void ReduceStressPill()
