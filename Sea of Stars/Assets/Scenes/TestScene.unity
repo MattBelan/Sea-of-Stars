@@ -4592,7 +4592,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027899894}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa6135ce852d3004a8eaa4bea0e262b3, type: 3}
   m_Name: 
@@ -6743,12 +6743,13 @@ MonoBehaviour:
   crew: []
   specialistCrew: []
   crewTotal: 0
-  crewPrefab: {fileID: 0}
-  storage: {fileID: 0}
-  engineRoom: {fileID: 0}
-  galley: {fileID: 0}
-  magazine: {fileID: 0}
-  weaponsStation: {fileID: 0}
+  crewPrefab: {fileID: 5092447242961766366, guid: 78ef82aca27c6d6468b4e7b1645c5084,
+    type: 3}
+  storage: {fileID: 613089107}
+  engineRoom: {fileID: 1326000468}
+  galley: {fileID: 1517554643}
+  magazine: {fileID: 25935816}
+  weaponsStation: {fileID: 186923230}
 --- !u!114 &1528298241
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,12 +47,14 @@ public class CrewManager : MonoBehaviour
             cm = Instantiate(crewPrefab);    // Create gameobject
             cScript = cm.GetComponent<CrewMember>();
 
-            // position them correctly in the scene
-            AssignToRoom(cm);
-
             // Give name and role
             cScript.name = crewNames[i];
             cScript.role = crewRoles[i];
+
+            // position them correctly in the scene
+            AssignToRoom(cm);
+
+            cm.layer = 8; // Crew Layer
 
             cScript.isSpecialist = false;
 
@@ -75,12 +77,13 @@ public class CrewManager : MonoBehaviour
         cm = Instantiate(crewPrefab);    // Create gameobject
         cScript = cm.GetComponent<CrewMember>();
 
-        // position them correctly in the scene
-        AssignToRoom(cm); 
+        cm.layer = 8; // Crew Layer
 
         // Give name and role
         cScript.name = crewNames[nameNum];
         cScript.role = crewRoles[roleNum];
+        // position them correctly in the scene
+        AssignToRoom(cm);
 
         if (isSpecialist)
         {            
@@ -104,19 +107,19 @@ public class CrewManager : MonoBehaviour
         switch(cm.GetComponent<CrewMember>().role)
         {
             case "Quartermaster":
-                cm.transform.position = storage.transform.position;
+                cm.transform.position = new Vector3(storage.transform.position.x, storage.transform.position.y, storage.transform.position.z - 1);
                 break;
             case "Cook":
-                cm.transform.position = galley.transform.position;
+                cm.transform.position = new Vector3(galley.transform.position.x, galley.transform.position.y, galley.transform.position.z - 1);
                 break;
             case "Engineer":
-                cm.transform.position = engineRoom.transform.position;
+                cm.transform.position = new Vector3(engineRoom.transform.position.x, engineRoom.transform.position.y, engineRoom.transform.position.z - 1);
                 break;
             case "Gunner":
-                cm.transform.position = weaponsStation.transform.position;
+                cm.transform.position = new Vector3(weaponsStation.transform.position.x, weaponsStation.transform.position.y, weaponsStation.transform.position.z - 1);
                 break;
             case "Loader":
-                cm.transform.position = magazine.transform.position;
+                cm.transform.position = new Vector3(magazine.transform.position.x, magazine.transform.position.y, magazine.transform.position.z - 1);
                 break;
         }
     }
