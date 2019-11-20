@@ -4,18 +4,15 @@ using UnityEngine;
 /*
  * Represents a crew member on the ship
  */
-public class CrewMember
+public class CrewMember : MonoBehaviour
 {
     // Attributes
     public string crewName;
     public string role;
     public bool isSpecialist = false;
-    
-    // Constructor
-    public CrewMember(string nm, string rl, bool sp)
+
+    private void Start()
     {
-        crewName = nm;
-        role = rl;
-        isSpecialist = sp;
+        
     }
 }

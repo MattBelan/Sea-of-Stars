@@ -262,6 +262,7 @@ MonoBehaviour:
   player: {fileID: 1027899899}
   roomName: Magazine
   combatScript: {fileID: 0}
+  crew: []
   hasSpecialist: 0
   bonusActive: 0
   timer: 0
@@ -1094,6 +1095,7 @@ MonoBehaviour:
   player: {fileID: 1027899899}
   roomName: WeaponStation
   combatScript: {fileID: 0}
+  crew: []
   hasSpecialist: 0
   bonusActive: 0
   timer: 0
@@ -2747,6 +2749,7 @@ MonoBehaviour:
   player: {fileID: 1027899899}
   roomName: Storage
   combatScript: {fileID: 0}
+  crew: []
   hasSpecialist: 0
   bonusActive: 0
   timer: 0
@@ -4196,6 +4199,7 @@ MonoBehaviour:
   player: {fileID: 1027899899}
   roomName: Bridge
   combatScript: {fileID: 0}
+  crew: []
   hasSpecialist: 0
   bonusActive: 0
   timer: 0
@@ -5634,6 +5638,7 @@ MonoBehaviour:
   player: {fileID: 1027899899}
   roomName: EngineRoom
   combatScript: {fileID: 0}
+  crew: []
   hasSpecialist: 0
   bonusActive: 0
   timer: 0
@@ -6579,6 +6584,7 @@ MonoBehaviour:
   player: {fileID: 1027899899}
   roomName: Galley
   combatScript: {fileID: 0}
+  crew: []
   hasSpecialist: 0
   bonusActive: 0
   timer: 0
@@ -6734,7 +6740,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f7ab866511d474f934db5d8dc29537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crew: []
+  specialistCrew: []
   crewTotal: 0
+  crewPrefab: {fileID: 0}
+  storage: {fileID: 0}
+  engineRoom: {fileID: 0}
+  galley: {fileID: 0}
+  magazine: {fileID: 0}
+  weaponsStation: {fileID: 0}
 --- !u!114 &1528298241
 MonoBehaviour:
   m_ObjectHideFlags: 0
