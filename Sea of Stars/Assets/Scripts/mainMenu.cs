@@ -14,6 +14,7 @@ public class mainMenu : MonoBehaviour
     public GameObject NameGrabber;
     public InputField nameField;
     public bool nameEntered = false;
+    public Image uiImage;
     // Start is called before the first frame update
     public void Start()
     {
