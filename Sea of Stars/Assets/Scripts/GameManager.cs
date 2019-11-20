@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Resource Data")]
-    // Food for thought: Condense these as a Vector3 called 'shipStats'?
     public int fuelCount = 10; // This is separate to prevent the header from appearing above all 3 attributes
     public int foodCount = 10, luminosityCount = 10, minLuminosity = 0;
     public int crewCount = 0;
