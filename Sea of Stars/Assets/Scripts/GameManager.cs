@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 /*
  * Holds key game data and methods
  */
@@ -24,10 +25,21 @@ public class GameManager : MonoBehaviour
     //used for map
     public int currNode;
 
+    public GameObject map;
+
     // Start is called before the first frame update
     void Start()
     {
         inCombat = true;
+
+        if (PlayerPrefs.GetFloat("InCombat") > 0)
+        {
+            enemy.Health = PlayerPrefs.GetFloat("EnemyHealth");
+        }
+
+        ship.Health = PlayerPrefs.GetFloat("ShipHealth");
+        currLevel = PlayerPrefs.GetInt("CurrLevel");
+        currNode = PlayerPrefs.GetInt("CurrNode");
     }
 
     // Update is called once per frame
@@ -38,18 +50,32 @@ public class GameManager : MonoBehaviour
         ship.inCombat = inCombat;
         enemy.inCombat = inCombat;
 
+        //saving in-game data
+        PlayerPrefs.SetFloat("ShipHealth", ship.Health);
+        PlayerPrefs.SetFloat("EnemyHealth", enemy.Health);
+        
+
         if (inCombat)
         {
             //Put combat specific function calls here
-
+            PlayerPrefs.SetInt("InCombat", 1);
         }
         else
         {
             //Put non-combat specific functions here
+            PlayerPrefs.SetInt("InCombat", 0);
+
             if (Input.GetKeyDown(KeyCode.M))
             {
                 //bring up map
-
+                if (map.activeSelf)
+                {
+                    map.SetActive(false);
+                }
+                else
+                {
+                    map.SetActive(true);
+                }
             }
         }
 
@@ -61,5 +87,16 @@ public class GameManager : MonoBehaviour
 
         //foodCount -= crewCount;
         //for some reason subtracts 10 every frame
+    }
+
+    public void MoveToNode(MapNode node)
+    {
+        currLevel++;
+        currNode = node.nodeNum;
+
+        PlayerPrefs.SetInt("CurrLevel", currLevel);
+        PlayerPrefs.SetInt("CurrNode", currNode);
+
+        SceneManager.LoadScene("TestScene");
     }
 }
