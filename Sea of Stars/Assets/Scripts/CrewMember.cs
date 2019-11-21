@@ -6,6 +6,9 @@ using UnityEngine;
  */
 public class CrewMember : MonoBehaviour
 {
+    [Header("Managers")]
+    public CrewManager crewManager;
+
     // Attributes
     public string crewName;
     public string role;
@@ -17,6 +20,8 @@ public class CrewMember : MonoBehaviour
 
     private void Start()
     {
+        if (!crewManager) crewManager = GameObject.Find("GameManager").GetComponent<CrewManager>();
+
         startPos = transform.position;
         direction = 1;
     }

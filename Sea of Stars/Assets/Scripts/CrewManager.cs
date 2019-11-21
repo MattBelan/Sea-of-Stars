@@ -50,6 +50,7 @@ public class CrewManager : MonoBehaviour
             // Give name and role
             cScript.name = crewNames[i];
             cScript.role = crewRoles[i];
+            cScript.crewManager = this;
 
             // position them correctly in the scene
             AssignToRoom(cm);
@@ -76,6 +77,7 @@ public class CrewManager : MonoBehaviour
 
         cm = Instantiate(crewPrefab);    // Create gameobject
         cScript = cm.GetComponent<CrewMember>();
+        cScript.crewManager = this;
 
         cm.layer = 8; // Crew Layer
 
