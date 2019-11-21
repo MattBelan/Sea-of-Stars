@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class CombatShip : CombatEntity
 {
     [Header("Managers")]
     public UIManager uiManager;
+
+    public GameObject therapyScreen;
 
     public List<ShipRoom> rooms;
     public bool shieldActive;
@@ -18,7 +21,11 @@ public class CombatShip : CombatEntity
     private bool pillReady;
     private bool pillTaken;
     private float prevPill;
+    private bool therapyHappening;
+    private float therapyStartTime;
     public bool SOSState;
+
+    UnityEvent therapyEvent = new UnityEvent();
 
     // Start is called before the first frame update
     public override void Start()
@@ -34,6 +41,8 @@ public class CombatShip : CombatEntity
         prevShield = 0;
         prevStun = 0;
         prevPill = 0;
+        therapyHappening = false;
+        therapyStartTime = 0;
         stress = 0;
         SOSState = false;
 
@@ -44,6 +53,8 @@ public class CombatShip : CombatEntity
     public override void Update()
     {
         base.Update();
+
+        Vector3 therapyPos;
         if(Health <= 2)
         {
             Debug.Log("Crisis event");
@@ -62,14 +73,39 @@ public class CombatShip : CombatEntity
         {
             stunActive = false;
         }
-        if(Time.time - prevPill > 5)
+        if(Time.time - prevPill > 3)
         {
             pillTaken = false;
         }
 
-        if(Time.time - prevPill > 10)
+        if(Time.time - prevPill > 4)
         {
             pillReady = true;
+        }
+
+        if (therapyHappening)
+        {
+            therapyPos = new Vector3(therapyScreen.transform.position.x, therapyScreen.transform.position.y - 0.015f, 1);
+            if(therapyPos.y <= 4.25f)
+            {
+                therapyPos.y = 4.25f;
+                therapyStartTime = Time.time;
+            }
+            if(Time.time - therapyStartTime > 4)
+            {
+                therapyHappening = false;
+            }
+            
+            therapyScreen.transform.position = therapyPos;
+        }
+        else
+        {
+            therapyPos = new Vector3(therapyScreen.transform.position.x, therapyScreen.transform.position.y + 0.015f, 1);
+            if (therapyPos.y >= 6.25f)
+            {
+                therapyPos.y = 6.25f;
+            }
+            therapyScreen.transform.position = therapyPos;
         }
 
         // Check if stress is too high
@@ -78,6 +114,8 @@ public class CombatShip : CombatEntity
             SOSState = true;
             uiManager.showSOS = true;
         }
+
+        
     }
 
     public void Repair(float val)
@@ -147,6 +185,7 @@ public class CombatShip : CombatEntity
         //require combat to be inactive
         if (inCombat)
         {
+            therapyHappening = true;
             if (pillTaken)
             {
                 stress = stress - 30;
@@ -176,6 +215,10 @@ public class CombatShip : CombatEntity
             {
                 stress = 0;
             }
+        }
+        else
+        {
+            Debug.Log("Medication on Cooldown");
         }
     }
 }

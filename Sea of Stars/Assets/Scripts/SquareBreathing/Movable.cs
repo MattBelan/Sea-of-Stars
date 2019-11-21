@@ -16,7 +16,7 @@ public class Movable : MonoBehaviour
     void Start()
     {
         canMove = true;
-        speed = 0.75f;
+        speed = 0.95f;
     }
 
     // Update is called once per frame

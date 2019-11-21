@@ -67,7 +67,7 @@ public class Manager : MonoBehaviour
                 m1Moved = true;
                 M2.canMove = true;
             }
-            else if (newM1Pos.y > H1.transform.position.y + 0.75f || newM1Pos.y < H1.transform.position.y - 0.75f)
+            else if (newM1Pos.y > H1.transform.position.y + 1.00f || newM1Pos.y < H1.transform.position.y - 1.0f)
             {
                 newM1Pos.y = -4.0f;
             }
@@ -90,7 +90,7 @@ public class Manager : MonoBehaviour
                 M2.ChangeMaterial();
                 m2Moved = true;
             }
-            else if (newM2Pos.y > H2.transform.position.y + 0.75f || newM2Pos.y < H2.transform.position.y - 0.75f)
+            else if (newM2Pos.y > H2.transform.position.y + 1.0f || newM2Pos.y < H2.transform.position.y - 1.0f)
             {
                 newM1Pos.y = 4.0f;
             }
