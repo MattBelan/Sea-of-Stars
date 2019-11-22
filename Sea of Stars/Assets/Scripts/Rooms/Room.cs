@@ -6,6 +6,9 @@ using UnityEngine;
  */
 public class Room : MonoBehaviour
 {
+    [Header("Managers")]
+    public GameManager gameManager;
+
     public TestPlayerScript player;
     public string roomName;
 
@@ -17,10 +20,13 @@ public class Room : MonoBehaviour
     public bool bonusActive;
     public float timer;
     public int seconds; // time elapsed in seconds
+    public int crewBonus;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        if (!gameManager) gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         combatScript = GameObject.Find("Ship").GetComponent<CombatShip>();
         crew = new List<CrewMember>();
         hasSpecialist = false;

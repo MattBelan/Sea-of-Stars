@@ -109,13 +109,11 @@ public class CombatShip : CombatEntity
         }
 
         // Check if stress is too high
-        if(stress >= 75 && SOSState == false)
+        if(stress >= 85 && SOSState == false)
         {
             SOSState = true;
             uiManager.showSOS = true;
-        }
-
-        
+        }        
     }
 
     public void Repair(float val)

@@ -47,13 +47,17 @@ public class CrewManager : MonoBehaviour
             cm = Instantiate(crewPrefab);    // Create gameobject
             cScript = cm.GetComponent<CrewMember>();
 
+            // Pick a random name and role for the crew member being added
+            int nameNum = Random.Range(0, crewNames.Count - 1);
+
             // Give name and role
-            cScript.name = crewNames[i];
+            cScript.crewName = crewNames[nameNum];
             cScript.role = crewRoles[i];
+            cm.name = crewRoles[i];
             cScript.crewManager = this;
 
             // position them correctly in the scene
-            AssignToRoom(cm);
+            AssignToRoom(cm, cScript);
 
             cm.layer = 8; // Crew Layer
 
@@ -61,7 +65,7 @@ public class CrewManager : MonoBehaviour
 
             crew.Add(cm);   // save ref in list
 
-            crewNames.RemoveAt(i); // Don't use the same name for multiple crew memebers
+            crewNames.RemoveAt(nameNum); // Don't use the same name for multiple crew memebers
         }
     }
 
@@ -82,10 +86,11 @@ public class CrewManager : MonoBehaviour
         cm.layer = 8; // Crew Layer
 
         // Give name and role
-        cScript.name = crewNames[nameNum];
+        cScript.crewName = crewNames[nameNum];
         cScript.role = crewRoles[roleNum];
+        cm.name = crewRoles[roleNum];
         // position them correctly in the scene
-        AssignToRoom(cm);
+        AssignToRoom(cm, cScript);
 
         if (isSpecialist)
         {            
@@ -103,25 +108,31 @@ public class CrewManager : MonoBehaviour
         crewNames.RemoveAt(nameNum); // Don't use the same name for multiple crew memebers
     }
 
-    // Moves a crewmember at the appropriate location
-    private void AssignToRoom(GameObject cm)
+    // Moves a crewmember at the appropriate location and gives a reference to the room's script
+    private void AssignToRoom(GameObject cm, CrewMember cs)
     {
         switch(cm.GetComponent<CrewMember>().role)
         {
             case "Quartermaster":
                 cm.transform.position = new Vector3(storage.transform.position.x + 0.25f, storage.transform.position.y + 0.4f, storage.transform.position.z - 1);
+                cs.assignedRoom = storage.GetComponent<Room>();
+                
                 break;
             case "Cook":
                 cm.transform.position = new Vector3(galley.transform.position.x, galley.transform.position.y + 0.4f, galley.transform.position.z - 1);
+                cs.assignedRoom = galley.GetComponent<Room>();
                 break;
             case "Engineer":
                 cm.transform.position = new Vector3(engineRoom.transform.position.x, engineRoom.transform.position.y + 0.4f, engineRoom.transform.position.z - 1);
+                cs.assignedRoom = engineRoom.GetComponent<Room>();
                 break;
             case "Gunner":
                 cm.transform.position = new Vector3(weaponsStation.transform.position.x, weaponsStation.transform.position.y + 0.4f, weaponsStation.transform.position.z - 1);
+                cs.assignedRoom = weaponsStation.GetComponent<Room>();
                 break;
             case "Loader":
                 cm.transform.position = new Vector3(magazine.transform.position.x, magazine.transform.position.y + 0.4f, magazine.transform.position.z - 1);
+                cs.assignedRoom = magazine.GetComponent<Room>();
                 break;
         }
     }

@@ -13,10 +13,16 @@ public class CrewMember : MonoBehaviour
     public string crewName;
     public string role;
     public bool isSpecialist = false;
+    public Room assignedRoom;
 
     // Movement
     private Vector3 startPos;
     private int direction;
+
+    [Header("Job Variables")]
+    public int baseRate;
+    public int multiplier;
+    private float timer;
 
     private void Start()
     {
@@ -28,14 +34,7 @@ public class CrewMember : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.x < startPos.x - 1)
-        {
-            direction = 1;
-        }
-        else if(transform.position.x > startPos.x + 1)
-        {
-            direction = -1;
-        }
+        
 
         Move();
     }
@@ -43,6 +42,39 @@ public class CrewMember : MonoBehaviour
     // Moves the Crew member back and forth
     private void Move()
     {
+        if (transform.position.x < startPos.x - 1)
+        {
+            direction = 1;
+        }
+        else if (transform.position.x > startPos.x + 1)
+        {
+            direction = -1;
+        }
+
         transform.position = new Vector3(transform.position.x + (0.025f * direction), transform.position.y, transform.position.z);
+    }
+
+    // Crew member performs a task associated with their role in the room they are assigned to
+    private void DoJob()
+    {
+        switch(role)
+        {
+            case "Quartermaster":
+                
+                break;
+            case "Cook":
+                
+                break;
+            case "Engineer":
+                
+
+                break;
+            case "Gunner":
+                
+                break;
+            case "Loader":
+                
+                break;
+        }
     }
 }

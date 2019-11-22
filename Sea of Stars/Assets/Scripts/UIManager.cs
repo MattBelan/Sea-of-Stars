@@ -71,5 +71,8 @@ public class UIManager : MonoBehaviour
         // Hide the button again
         showSOS = false;
         sosButton.gameObject.SetActive(false);
+
+        // TODO: Recruit a new crew member
+
     }
 }
