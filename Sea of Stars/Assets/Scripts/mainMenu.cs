@@ -59,8 +59,25 @@ public class mainMenu : MonoBehaviour
 
         Debug.Log(playerName);
 
+        //Resetting room health on fresh game
+        PlayerPrefs.SetFloat("EngineRoom", 4);
+        PlayerPrefs.SetFloat("Bridge", 4);
+        PlayerPrefs.SetFloat("Galley", 4);
+        PlayerPrefs.SetFloat("Magazine", 4);
+        PlayerPrefs.SetFloat("WeaponStation", 4);
+
+        //Resetting ship/enemy health and game progression
+        PlayerPrefs.SetFloat("ShipHealth", 20);
+        PlayerPrefs.SetFloat("EnemyHealth", 10);
+        PlayerPrefs.SetFloat("CurrLevel", 1);
+        PlayerPrefs.SetFloat("CurrNode", 0);
+        PlayerPrefs.SetFloat("InCombat", 1);
+
+        Debug.Log(PlayerPrefs.GetFloat("ShipHealth"));
+
         if (nameEntered == true)
         {
+
             SceneManager.LoadScene(sceneIndex);
         }
     }

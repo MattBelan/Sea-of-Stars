@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public int currNode;
 
     public GameObject map;
+    public GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         }
 
         ship.Health = PlayerPrefs.GetFloat("ShipHealth");
+        //Debug.Log(PlayerPrefs.GetFloat("ShipHealth"));
         currLevel = PlayerPrefs.GetInt("CurrLevel");
         currNode = PlayerPrefs.GetInt("CurrNode");
     }
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
         //saving in-game data
         PlayerPrefs.SetFloat("ShipHealth", ship.Health);
         PlayerPrefs.SetFloat("EnemyHealth", enemy.Health);
-        
+
 
         if (inCombat)
         {
@@ -71,10 +73,12 @@ public class GameManager : MonoBehaviour
                 if (map.activeSelf)
                 {
                     map.SetActive(false);
+                    canvas.SetActive(true);
                 }
                 else
                 {
                     map.SetActive(true);
+                    canvas.SetActive(false);
                 }
             }
         }
@@ -96,6 +100,8 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetInt("CurrLevel", currLevel);
         PlayerPrefs.SetInt("CurrNode", currNode);
+        PlayerPrefs.SetFloat("InCombat", 1);
+        PlayerPrefs.SetFloat("EnemyHealth", 10);
 
         SceneManager.LoadScene("TestScene");
     }

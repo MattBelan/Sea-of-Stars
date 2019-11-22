@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91344c2deb1c9af4ba7b11a83a1554f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   player: {fileID: 1027899899}
   roomName: Magazine
   combatScript: {fileID: 0}
@@ -267,6 +268,7 @@ MonoBehaviour:
   bonusActive: 0
   timer: 0
   seconds: 0
+  crewBonus: 0
 --- !u!65 &25935819
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -340,6 +342,7 @@ MonoBehaviour:
   health: 4
   maxHealth: 4
   roomModifier: 0
+  id: Magazine
 --- !u!1 &72040245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafaecc21c2d51a46be24d9dd73ac697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   player: {fileID: 1027899899}
   roomName: WeaponStation
   combatScript: {fileID: 0}
@@ -1100,6 +1104,7 @@ MonoBehaviour:
   bonusActive: 0
   timer: 0
   seconds: 0
+  crewBonus: 0
 --- !u!65 &186923233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1173,6 +1178,7 @@ MonoBehaviour:
   health: 4
   maxHealth: 4
   roomModifier: 0
+  id: WeaponStation
 --- !u!1 &255910837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1797,9 @@ MonoBehaviour:
   - {fileID: 1995252933}
   - {fileID: 1831764929}
   nodeNum: 1
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &340024625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2838,6 +2846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b76d60b81a126438d42c93003cdb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   player: {fileID: 1027899899}
   roomName: Storage
   combatScript: {fileID: 0}
@@ -2846,6 +2855,7 @@ MonoBehaviour:
   bonusActive: 0
   timer: 0
   seconds: 0
+  crewBonus: 0
 --- !u!65 &613089110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2919,6 +2929,7 @@ MonoBehaviour:
   health: 4
   maxHealth: 4
   roomModifier: 0
+  id: 
 --- !u!1 &616160613
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,7 +3311,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 12
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &683111431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3677,7 +3690,9 @@ MonoBehaviour:
   - {fileID: 1671808463}
   - {fileID: 1728138195}
   nodeNum: 2
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &745251990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4218,6 +4233,7 @@ MonoBehaviour:
   health: 4
   maxHealth: 4
   roomModifier: 0
+  id: Bridge
 --- !u!65 &951229759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4288,6 +4304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9455393d7ec63d346a2e8a777083ae87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   player: {fileID: 1027899899}
   roomName: Bridge
   combatScript: {fileID: 0}
@@ -4296,6 +4313,7 @@ MonoBehaviour:
   bonusActive: 0
   timer: 0
   seconds: 0
+  crewBonus: 0
 --- !u!1 &970463481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,7 +4362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 6
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &970463484
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5161,7 +5181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 7
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1150474573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5450,7 +5472,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 11
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1241501046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5727,6 +5751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062336d2e0717a54ea1496687f25dc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   player: {fileID: 1027899899}
   roomName: EngineRoom
   combatScript: {fileID: 0}
@@ -5735,6 +5760,7 @@ MonoBehaviour:
   bonusActive: 0
   timer: 0
   seconds: 0
+  crewBonus: 0
 --- !u!65 &1326000471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5808,6 +5834,7 @@ MonoBehaviour:
   health: 4
   maxHealth: 4
   roomModifier: 0
+  id: EngineRoom
 --- !u!1 &1334219979
 GameObject:
   m_ObjectHideFlags: 0
@@ -6254,7 +6281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1400219396
 Transform:
   m_ObjectHideFlags: 0
@@ -6263,7 +6290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400219395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.18, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1831764933}
@@ -6673,6 +6700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e01cc0909aeec458fabff31eb7b20e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   player: {fileID: 1027899899}
   roomName: Galley
   combatScript: {fileID: 0}
@@ -6681,6 +6709,7 @@ MonoBehaviour:
   bonusActive: 0
   timer: 0
   seconds: 0
+  crewBonus: 0
 --- !u!65 &1517554646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6754,6 +6783,7 @@ MonoBehaviour:
   health: 4
   maxHealth: 4
   roomModifier: 0
+  id: Galley
 --- !u!331 &1517554650
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -6894,7 +6924,8 @@ MonoBehaviour:
   enemy: {fileID: 630200727}
   currLevel: 0
   currNode: 0
-  map: {fileID: 0}
+  map: {fileID: 1400219395}
+  canvas: {fileID: 1071282681}
 --- !u!4 &1528298243
 Transform:
   m_ObjectHideFlags: 0
@@ -6957,7 +6988,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 9
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1545791282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7901,7 +7934,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 3
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1671808464
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8008,7 +8043,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 10
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1680958339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8115,7 +8152,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 4
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1728138196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8392,7 +8431,9 @@ MonoBehaviour:
   - {fileID: 340024624}
   - {fileID: 745251989}
   nodeNum: 0
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1831764930
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8513,7 +8554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 8
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1845160106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8843,7 +8886,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 13
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1897998382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9271,7 +9316,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedNodes: []
   nodeNum: 5
-  manager: {fileID: 0}
+  manager: {fileID: 1528298242}
+  current: {fileID: 2100000, guid: f26178c2a0b964b42bf43fc835ee0c13, type: 2}
+  canVisit: {fileID: 2100000, guid: 4dab062a6686f8e44a941ced814fd6a1, type: 2}
 --- !u!65 &1995252934
 BoxCollider:
   m_ObjectHideFlags: 0
