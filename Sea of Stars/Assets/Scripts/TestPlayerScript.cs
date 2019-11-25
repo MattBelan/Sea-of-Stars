@@ -16,22 +16,44 @@ public class TestPlayerScript : MonoBehaviour
     public string currRoom;
 
     public float gatherInterval;
-    float lastGatherTime;
+    public float timeLimit;
+    private float waitTime;
+
+    private float repairRate;
+    private float attackRate;
+    private float attackTimer2;
     // Start is called before the first frame update
     void Start()
     {
         if (!gameManager) gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        lastGatherTime = 0;
         currRoom = "Bridge";
+        timeLimit = 1.0f;
+        waitTime = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastGatherTime > gatherInterval)
+        repairRate = 0.25f;
+        attackRate = 1.0f;
+        if (Time.time > waitTime)
         {
-            lastGatherTime = Time.time;
+            waitTime += timeLimit;
+            attackTimer2 = Time.time;
+
+            gameManager.fuelCount -= 0.5f;
+            gameManager.foodCount -= 0.5f;
+
+            if (gameManager.fuelCount < 0)
+            {
+                gameManager.fuelCount = 0;
+                attackRate = 1.5f;
+            }
+            if (gameManager.foodCount < 0)
+            {
+                gameManager.foodCount = 0;
+                repairRate = 0.05f;
+            }
 
             switch (currRoom)
             {
@@ -42,7 +64,7 @@ public class TestPlayerScript : MonoBehaviour
                         gameManager.fuelCount = 100;
                         break;
                     }
-                    gameManager.fuelCount += 4;
+                    gameManager.fuelCount += 5.0f;
                     break;
 
                 case "Galley":
@@ -51,7 +73,7 @@ public class TestPlayerScript : MonoBehaviour
                         gameManager.foodCount = 100;
                         break;
                     }
-                    gameManager.foodCount += 4;
+                    gameManager.foodCount += 5.0f;
                     break;
 
                 case "EngineRoom":
@@ -60,27 +82,18 @@ public class TestPlayerScript : MonoBehaviour
                         ship.Health = 20.0f;
                         break;
                     }
-                    ship.Health += 0.25f;
+                    ship.Health += repairRate;
                     break;
 
                 case "WeaponStation":
-                    ship.Attack(enemy);
+                    if(Time.time == attackTimer2 * attackRate)
+                    {
+                        ship.Attack(enemy);
+                    }
                     break;
 
                 default:
                     break;
-            }
-
-            gameManager.fuelCount -= 1;
-            gameManager.foodCount -= 1;
-
-            if (gameManager.fuelCount < 0)
-            {
-                gameManager.fuelCount = 0;
-            }
-            if (gameManager.foodCount < 0)
-            {
-                gameManager.foodCount = 0;
             }
         }
 
@@ -91,6 +104,5 @@ public class TestPlayerScript : MonoBehaviour
         Vector3 energyScale = energyBar.transform.localScale;
         energyScale.x = gameManager.fuelCount / 100;
         energyBar.transform.localScale = energyScale;
-
     }
 }

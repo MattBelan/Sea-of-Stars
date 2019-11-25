@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Resource Data")]
-    public int fuelCount = 10; // This is separate to prevent the header from appearing above all 3 attributes
-    public int foodCount = 10, luminosityCount = 10, minLuminosity = 0;
+    public float fuelCount = 10; // This is separate to prevent the header from appearing above all 3 attributes
+    public float foodCount = 10, luminosityCount = 10, minLuminosity = 0;
     public int crewCount = 0;
 
     private int foodCost;

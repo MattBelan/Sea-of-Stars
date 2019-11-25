@@ -1510,6 +1510,7 @@ MonoBehaviour:
   - {fileID: 951229758}
   shieldActive: 0
   stunActive: 0
+  therapyHappening: 0
   SOSState: 0
 --- !u!1 &311605897
 GameObject:
@@ -2790,7 +2791,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pill
+  m_Text: Medication
 --- !u!222 &585285259
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4704,7 +4705,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027899894}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa6135ce852d3004a8eaa4bea0e262b3, type: 3}
   m_Name: 
@@ -4715,7 +4716,8 @@ MonoBehaviour:
   ship: {fileID: 303837004}
   enemy: {fileID: 630200727}
   currRoom: 
-  gatherInterval: 1
+  gatherInterval: 0
+  timeLimit: 0
 --- !u!1 &1043498341
 GameObject:
   m_ObjectHideFlags: 0

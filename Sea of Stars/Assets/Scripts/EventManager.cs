@@ -41,8 +41,8 @@ public class EventManager : MonoBehaviour
     void CauseEvent()
     {
         // Choose a type
-        int eventType = Random.Range(0, 5);
-        int amount = 0;
+        float eventType = 1.0f * Random.Range(0, 5);
+        float amount = 0.0f;
 
         switch(eventType)
         {
@@ -113,12 +113,12 @@ public class EventManager : MonoBehaviour
     }
 
     // Gets the amount of a resource that should be taken away or added
-    int GetEventAmount(int affectedResource)
+    float GetEventAmount(float affectedResource)
     {
         // Get minimum value of resource - don't remove (or add) more than 90% of the resource's current value
-        int minVal = Mathf.FloorToInt((affectedResource * 10) / 100);
+        float minVal = Mathf.FloorToInt((affectedResource * 10) / 100);
 
-        return Random.Range(1, affectedResource - minVal) * RandomSign();
+        return 1.0f * Random.Range(1, affectedResource - minVal) * RandomSign();
     }
 
     // Helper Method: Returns 1 or -1 to randomly change the sign of a value

@@ -38,6 +38,10 @@ public class CombatEntity : MonoBehaviour
     public virtual void TakeDamage(float dam)
     {
         Health -= dam;
+        if(Health < 0)
+        {
+            Health = 0;
+        }
         Debug.Log(ID + " now has " + Health + " Health");
     }
 
@@ -48,6 +52,7 @@ public class CombatEntity : MonoBehaviour
             if(target.Health <= 0.0f)
             {
                 Debug.Log("Enemy is defeated");
+                inCombat = false;
                 return;
             }
             AttackReady = false;
