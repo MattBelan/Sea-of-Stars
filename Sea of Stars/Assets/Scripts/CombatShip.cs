@@ -88,9 +88,9 @@ public class CombatShip : CombatEntity
             {
                 
                 therapyPos = new Vector3(therapyScreen.transform.position.x, therapyScreen.transform.position.y - 0.015f, 1);
-                if (therapyPos.y <= 4.25f)
+                if (therapyPos.y <= 3.5f)
                 {
-                    therapyPos.y = 4.25f;
+                    therapyPos.y = 3.5f;
                     if(therapyStartTime == 0)
                     {
                         therapyStartTime = Time.time;
@@ -107,9 +107,9 @@ public class CombatShip : CombatEntity
             else if(therapyHappening == 2)
             {
                 therapyPos = new Vector3(therapyScreen.transform.position.x, therapyScreen.transform.position.y + 0.015f, 1);
-                if (therapyPos.y >= 6.25f)
+                if (therapyPos.y >= 7.0f)
                 {
-                    therapyPos.y = 6.25f;
+                    therapyPos.y = 7.0f;
                     therapyHappening = 0;
                 }
                 therapyScreen.transform.position = therapyPos;

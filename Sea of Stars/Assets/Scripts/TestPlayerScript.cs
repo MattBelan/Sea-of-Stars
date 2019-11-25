@@ -29,30 +29,38 @@ public class TestPlayerScript : MonoBehaviour
         currRoom = "Bridge";
         timeLimit = 1.0f;
         waitTime = 0.0f;
+        repairRate = 0.25f;
+        attackRate = 1.0f;
+        attackTimer2 = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        repairRate = 0.25f;
-        attackRate = 1.0f;
         if (Time.time > waitTime)
         {
             waitTime += timeLimit;
-            attackTimer2 = Time.time;
 
-            gameManager.fuelCount -= 0.5f;
-            gameManager.foodCount -= 0.5f;
+            gameManager.fuelCount -= 1.0f;
+            gameManager.foodCount -= 1.0f;
 
             if (gameManager.fuelCount < 0)
             {
                 gameManager.fuelCount = 0;
-                attackRate = 1.5f;
+                attackRate = 1.25f;
+            }
+            else
+            {
+                attackRate = 1.0f;
             }
             if (gameManager.foodCount < 0)
             {
                 gameManager.foodCount = 0;
                 repairRate = 0.05f;
+            }
+            else
+            {
+                repairRate = 0.25f;
             }
 
             switch (currRoom)
@@ -83,15 +91,19 @@ public class TestPlayerScript : MonoBehaviour
                         break;
                     }
                     ship.Health += repairRate;
+                    ship.Health = Mathf.Round(ship.Health * 100.0f) / 100.0f;
                     break;
 
                 case "WeaponStation":
-                    if(Time.time == attackTimer2 * attackRate)
+                    if(attackTimer2 == 0.0f)
                     {
+                        attackTimer2 = Time.time;
+                    }
+                    else if (Time.time - (attackTimer2 * attackRate) > 3){
                         ship.Attack(enemy);
+                        attackTimer2 = 0.0f;
                     }
                     break;
-
                 default:
                     break;
             }
