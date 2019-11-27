@@ -23,6 +23,8 @@ public class CrewMember : MonoBehaviour
     public int baseRate;
     public int multiplier;
     private float timer;
+    public int seconds; // time elapsed in seconds
+    public int jobTime; // Amount of time required to complete job, shorter time for specialists
 
     private void Start()
     {
@@ -34,9 +36,19 @@ public class CrewMember : MonoBehaviour
 
     private void Update()
     {
-        
-
         Move();
+
+        timer += Time.deltaTime;
+        seconds = (int)timer % 60;
+
+        // Do job every 'jobTime' seconds
+        if(seconds >= jobTime)
+        {
+            timer = 0f;
+            seconds = 0;
+
+            DoJob();
+        }
     }
 
     // Moves the Crew member back and forth
@@ -60,20 +72,24 @@ public class CrewMember : MonoBehaviour
         switch(role)
         {
             case "Quartermaster":
-                
+                // Generates fuel
+                (assignedRoom as Storage).Refuel();
                 break;
             case "Cook":
-                
+                // Generates food
+                (assignedRoom as Galley).PrepareFood();
                 break;
             case "Engineer":
-                
-
+                // Restores health
+                (assignedRoom as EngineRoom).RepairEngine();
                 break;
             case "Gunner":
-                
+                // Increases damage
+                (assignedRoom as WeaponStations).ManBattlestations();
                 break;
             case "Loader":
-                
+                // Increases fire rate
+                (assignedRoom as Magazine).RestockAmmo();
                 break;
         }
     }

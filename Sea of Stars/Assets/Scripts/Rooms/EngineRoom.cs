@@ -23,16 +23,17 @@ public class EngineRoom : Room
 
             if (seconds == 15) // end the bonus
             {
-                Debug.Log("Ship health bonus ended");
                 timer = 0f;
                 seconds = 0;
-                combatScript.Health -= 5;
+
+                // Removed b/c doesn't make much sense for the restored health to go away
+                //combatScript.Health -= 5;
                 
-                // Make sure the ship's health doesn't go below 0
-                if(combatScript.Health <= 0)
-                {
-                    combatScript.Health = 1;
-                }
+                //// Make sure the ship's health doesn't go below 0
+                //if(combatScript.Health <= 0)
+                //{
+                //    combatScript.Health = 1;
+                //}
 
                 bonusActive = false; // stop timer
             }
@@ -42,9 +43,9 @@ public class EngineRoom : Room
     // Provides a bonus to the ship's health
     public void RepairEngine()
     {
-        Debug.Log("Repairing engine");
+        //Debug.Log("Repairing engine");
 
         bonusActive = true; // start timer
-        combatScript.Health += 5;
+        combatScript.Health += 2;
     }
 }

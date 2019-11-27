@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Infirmary : Room
+public class Storage : Room
 {
     // Start is called before the first frame update
     public override void Start()
@@ -14,5 +14,12 @@ public class Infirmary : Room
     void Update()
     {
         
+    }
+
+    public void Refuel()
+    {
+        //Debug.Log("Refueling");
+
+        gameManager.fuelCount += 5;
     }
 }

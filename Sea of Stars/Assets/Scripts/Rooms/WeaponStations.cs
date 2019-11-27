@@ -21,7 +21,7 @@ public class WeaponStations : Room
             timer += Time.deltaTime;
             seconds = (int)timer % 60;
 
-            if (seconds == 15) // end the bonus
+            if (seconds == 5) // end the bonus
             {
                 Debug.Log("Weapon damage bonus ended");
                 timer = 0f;
@@ -35,7 +35,7 @@ public class WeaponStations : Room
     // Provides a bonus to the ship's weapons - doubles damage
     public void ManBattlestations()
     {
-        Debug.Log("Manning battlestations!");
+        //Debug.Log("Manning battlestations!");
 
         bonusActive = true; // start timer
         combatScript.Damage *= 2;

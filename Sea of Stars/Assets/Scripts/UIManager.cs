@@ -64,15 +64,25 @@ public class UIManager : MonoBehaviour
     // Called when SOS button is pressed
     public void SOS()
     {
-        ship.stress = 0;
+        // Decrease stress to leave SOS state
+        // ===== TODO: Could add a cooldown for using SOS again rather than subtracting stress ====
+        ship.stress -= 15;        
 
         ship.SOSState = false;
 
         // Hide the button again
         showSOS = false;
         sosButton.gameObject.SetActive(false);
+        
+        // Recruit a random specialist crewmember
+        if(crewManager.crewTotal < 10)
+        {
+            crewManager.RecruitCrew(true);
+        }
+        else
+        {
+            // Alert the player the ship does not have room for more crew
 
-        // TODO: Recruit a new crew member
-
+        }
     }
 }

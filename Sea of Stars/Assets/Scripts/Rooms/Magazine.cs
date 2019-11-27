@@ -21,7 +21,7 @@ public class Magazine : Room
             timer += Time.deltaTime;
             seconds = (int)timer % 60;
 
-            if (seconds == 15) // end the bonus
+            if (seconds == 5) // end the bonus
             {
                 Debug.Log("Fire rate bonus ended");
                 timer = 0f;
@@ -35,7 +35,7 @@ public class Magazine : Room
     // Provides a bonus to the ship's fire rate
     public void RestockAmmo()
     {
-        Debug.Log("Restocking ammunition");
+        //Debug.Log("Restocking ammunition");
 
         bonusActive = true; // start timer
         combatScript.FireRate *= 1.5f;
