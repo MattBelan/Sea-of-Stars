@@ -20,7 +20,6 @@ public class CrewMember : MonoBehaviour
     private int direction;
 
     [Header("Job Variables")]
-    public int baseRate;
     public int multiplier;
     private float timer;
     public int seconds; // time elapsed in seconds
@@ -32,6 +31,7 @@ public class CrewMember : MonoBehaviour
 
         startPos = transform.position;
         direction = 1;
+        multiplier = 1;
     }
 
     private void Update()
@@ -73,23 +73,23 @@ public class CrewMember : MonoBehaviour
         {
             case "Quartermaster":
                 // Generates fuel
-                (assignedRoom as Storage).Refuel();
+                (assignedRoom as Storage).Refuel(multiplier);
                 break;
             case "Cook":
                 // Generates food
-                (assignedRoom as Galley).PrepareFood();
+                (assignedRoom as Galley).PrepareFood(multiplier);
                 break;
             case "Engineer":
                 // Restores health
-                (assignedRoom as EngineRoom).RepairEngine();
+                (assignedRoom as EngineRoom).RepairEngine(multiplier);
                 break;
             case "Gunner":
                 // Increases damage
-                (assignedRoom as WeaponStations).ManBattlestations();
+                (assignedRoom as WeaponStations).ManBattlestations(multiplier);
                 break;
             case "Loader":
                 // Increases fire rate
-                (assignedRoom as Magazine).RestockAmmo();
+                (assignedRoom as Magazine).RestockAmmo(multiplier);
                 break;
         }
     }

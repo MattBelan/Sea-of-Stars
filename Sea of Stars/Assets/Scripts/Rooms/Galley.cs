@@ -19,10 +19,10 @@ public class Galley : Room
     }
 
     // 
-    public void PrepareFood()
+    public void PrepareFood(int mult)
     {
         //Debug.Log("Prepared food");
 
-        gameManager.foodCount += 5;
+        gameManager.foodCount += (5 * mult);
     }
 }

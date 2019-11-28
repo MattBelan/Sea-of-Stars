@@ -16,10 +16,10 @@ public class Storage : Room
         
     }
 
-    public void Refuel()
+    public void Refuel(int mult)
     {
         //Debug.Log("Refueling");
-
-        gameManager.fuelCount += 5;
+        
+        gameManager.fuelCount += (5 * mult);
     }
 }

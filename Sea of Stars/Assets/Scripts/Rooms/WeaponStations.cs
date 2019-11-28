@@ -33,11 +33,12 @@ public class WeaponStations : Room
     }
 
     // Provides a bonus to the ship's weapons - doubles damage
-    public void ManBattlestations()
+    public void ManBattlestations(int mult)
     {
         //Debug.Log("Manning battlestations!");
 
         bonusActive = true; // start timer
-        combatScript.Damage *= 2;
+
+        combatScript.Damage *= (2 * mult);
     }
 }

@@ -33,11 +33,12 @@ public class Magazine : Room
     }
 
     // Provides a bonus to the ship's fire rate
-    public void RestockAmmo()
+    public void RestockAmmo(int mult)
     {
         //Debug.Log("Restocking ammunition");
 
         bonusActive = true; // start timer
-        combatScript.FireRate *= 1.5f;
+
+        combatScript.FireRate *= (1.5f * mult);
     }
 }

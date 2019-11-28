@@ -41,11 +41,12 @@ public class EngineRoom : Room
     }
 
     // Provides a bonus to the ship's health
-    public void RepairEngine()
+    public void RepairEngine(int mult)
     {
         //Debug.Log("Repairing engine");
 
         bonusActive = true; // start timer
-        combatScript.Health += 2;
+
+        combatScript.Health += (2 * mult);
     }
 }

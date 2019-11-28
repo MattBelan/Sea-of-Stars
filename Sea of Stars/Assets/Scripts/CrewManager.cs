@@ -97,6 +97,7 @@ public class CrewManager : MonoBehaviour
         if (isSpecialist)
         {
             cScript.jobTime = 10; // Set time it takes for crewmember to do a job
+            cScript.multiplier = 2;
 
             // position them correctly in the scene
             AssignToRoom(cm, cScript, true);
