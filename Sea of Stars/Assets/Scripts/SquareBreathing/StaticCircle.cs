@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StaticCircle : MonoBehaviour
 {
-    public Material success;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +17,6 @@ public class StaticCircle : MonoBehaviour
 
     }
 
-    public void ChangeMaterial()
-    {
-        GetComponent<Renderer>().material = success;
-    }
 
     public void Hide()
     {

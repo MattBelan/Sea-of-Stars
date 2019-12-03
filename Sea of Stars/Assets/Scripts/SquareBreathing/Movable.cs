@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Movable : MonoBehaviour
 {
-    public Material success;
     public bool canMove;
 
     private Vector3 mLastPosition;
@@ -16,7 +15,7 @@ public class Movable : MonoBehaviour
     void Start()
     {
         canMove = true;
-        speed = 0.95f;
+        speed = 0.85f;
     }
 
     // Update is called once per frame
@@ -37,10 +36,5 @@ public class Movable : MonoBehaviour
             transform.position += (Input.mousePosition - mLastPosition) * speed * Time.deltaTime;
             mLastPosition = Input.mousePosition;
         }
-    }
-
-    public void ChangeMaterial()
-    {
-        GetComponent<Renderer>().material = success;
     }
 }

@@ -65,8 +65,7 @@ public class UIManager : MonoBehaviour
     public void SOS()
     {
         // Decrease stress to leave SOS state
-        // ===== TODO: Could add a cooldown for using SOS again rather than subtracting stress ====
-        ship.stress -= 15;        
+        // ===== TODO: Could add a cooldown for using SOS again rather than subtracting stress ====    
 
         ship.SOSState = false;
 
