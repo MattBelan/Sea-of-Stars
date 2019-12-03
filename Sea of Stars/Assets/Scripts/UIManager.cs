@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
     {
         // Decrease stress to leave SOS state
         // ===== TODO: Could add a cooldown for using SOS again rather than subtracting stress ====    
-
+        ship.stress -= 10;
         ship.SOSState = false;
 
         // Hide the button again

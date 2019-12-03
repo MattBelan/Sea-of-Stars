@@ -149,7 +149,7 @@ public class Manager : MonoBehaviour
         //handling hints circles
         if (!m1Moved)
         {
-            newH1Pos = new Vector3(H1.transform.position.x, H1.transform.position.y + 0.045f, 1);
+            newH1Pos = new Vector3(H1.transform.position.x, H1.transform.position.y + 0.0225f, 1);
             if (newH1Pos.y >= 3.0f)
             {
                 newH1Pos.y = -2.0f;
@@ -166,7 +166,7 @@ public class Manager : MonoBehaviour
 
             if (!m2Moved)
             {
-                newH2Pos = new Vector3(H2.transform.position.x, H2.transform.position.y - 0.045f, 1);
+                newH2Pos = new Vector3(H2.transform.position.x, H2.transform.position.y - 0.0225f, 1);
                 if (newH2Pos.y <= -3.0f)
                 {
                     newH2Pos.y = 2.0f;
