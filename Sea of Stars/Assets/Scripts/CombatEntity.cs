@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatEntity : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class CombatEntity : MonoBehaviour
     float prevTime;
 
     public bool inCombat = true;
+
+    public List<Text> log;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -59,6 +62,9 @@ public class CombatEntity : MonoBehaviour
             prevTime = Time.time;
             target.TakeDamage(Damage);
             Debug.Log(ID + " did " + Damage + " Damage to " + target.ID);
+
+            log[1].text = log[0].text;
+            log[0].text = ID + " did " + Damage + " Damage to " + target.ID;
         }
         else
         {

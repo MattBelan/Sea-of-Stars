@@ -48,6 +48,11 @@ public class CombatEnemy : CombatEntity
                 startTime = Time.time;
             }
         }
+
+        if (Health <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public override void Attack(CombatEntity target)

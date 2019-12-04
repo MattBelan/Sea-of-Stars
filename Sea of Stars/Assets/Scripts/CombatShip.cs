@@ -16,6 +16,7 @@ public class CombatShip : CombatEntity
     float prevShield;
     float prevStun;
     public bool stunActive;
+    public GameObject shield;
 
     public float stress { get; set; } // 0 - 100
     private bool pillReady;
@@ -65,6 +66,16 @@ public class CombatShip : CombatEntity
 
         FireRate = 5 * (1 / rooms[3].roomModifier);
         Damage = 2 * rooms[4].roomModifier;
+
+        //Shield overlay
+        if (shieldActive)
+        {
+            shield.SetActive(true);
+        }
+        else
+        {
+            shield.SetActive(false);
+        }
 
         if (Time.time - prevShield > 3)
         {

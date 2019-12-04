@@ -37,11 +37,22 @@ public class GameManager : MonoBehaviour
         {
             enemy.Health = PlayerPrefs.GetFloat("EnemyHealth");
         }
+        else
+        {
+            enemy.Health = 5 * currLevel;
+            enemy.Damage = .5f * currLevel;
+        }
 
         ship.Health = PlayerPrefs.GetFloat("ShipHealth");
         //Debug.Log(PlayerPrefs.GetFloat("ShipHealth"));
         currLevel = PlayerPrefs.GetInt("CurrLevel");
         currNode = PlayerPrefs.GetInt("CurrNode");
+
+        if(enemy.Health <= 0)
+        {
+            enemy.Health = 5 * currLevel;
+            enemy.Damage = .5f * currLevel;
+        }
     }
 
     // Update is called once per frame
@@ -96,12 +107,13 @@ public class GameManager : MonoBehaviour
     public void MoveToNode(MapNode node)
     {
         currLevel++;
+        Debug.Log(currLevel);
         currNode = node.nodeNum;
 
         PlayerPrefs.SetInt("CurrLevel", currLevel);
         PlayerPrefs.SetInt("CurrNode", currNode);
         PlayerPrefs.SetFloat("InCombat", 1);
-        PlayerPrefs.SetFloat("EnemyHealth", 10);
+        PlayerPrefs.SetFloat("EnemyHealth", 5*currLevel);
 
         SceneManager.LoadScene("TestScene");
     }
