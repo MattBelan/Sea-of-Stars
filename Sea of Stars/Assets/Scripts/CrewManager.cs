@@ -140,31 +140,31 @@ public class CrewManager : MonoBehaviour
         switch(cm.GetComponent<CrewMember>().role)
         {
             case "Quartermaster":
-                cm.transform.position = new Vector3(storage.transform.position.x + 0.25f, storage.transform.position.y + 0.4f, storage.transform.position.z - 1);
+                cm.transform.position = new Vector3(storage.transform.position.x + 0.25f, storage.transform.position.y + 0.45f, storage.transform.position.z - 1);
                 Storage st = storage.GetComponent<Storage>();
                 cs.assignedRoom = st;
                 if (isSpec) st.hasSpecialist = true;
                 break;
             case "Cook":
-                cm.transform.position = new Vector3(galley.transform.position.x, galley.transform.position.y + 0.4f, galley.transform.position.z - 1);
+                cm.transform.position = new Vector3(galley.transform.position.x, galley.transform.position.y + 0.45f, galley.transform.position.z - 1);
                 Galley gal = galley.GetComponent<Galley>();
                 cs.assignedRoom = gal;
                 if (isSpec) gal.hasSpecialist = true;
                 break;
             case "Engineer":
-                cm.transform.position = new Vector3(engineRoom.transform.position.x, engineRoom.transform.position.y + 0.4f, engineRoom.transform.position.z - 1);
+                cm.transform.position = new Vector3(engineRoom.transform.position.x, engineRoom.transform.position.y + 0.45f, engineRoom.transform.position.z - 1);
                 EngineRoom er = engineRoom.GetComponent<EngineRoom>();
                 cs.assignedRoom = er;
                 if (isSpec) er.hasSpecialist = true;
                 break;
             case "Gunner":
-                cm.transform.position = new Vector3(weaponsStation.transform.position.x, weaponsStation.transform.position.y + 0.4f, weaponsStation.transform.position.z - 1);
+                cm.transform.position = new Vector3(weaponsStation.transform.position.x, weaponsStation.transform.position.y + 0.45f, weaponsStation.transform.position.z - 1);
                 WeaponStations ws = weaponsStation.GetComponent<WeaponStations>();
                 cs.assignedRoom = ws;
                 if (isSpec) ws.hasSpecialist = true;
                 break;
             case "Loader":
-                cm.transform.position = new Vector3(magazine.transform.position.x, magazine.transform.position.y + 0.4f, magazine.transform.position.z - 1);
+                cm.transform.position = new Vector3(magazine.transform.position.x, magazine.transform.position.y + 0.45f, magazine.transform.position.z - 1);
                 Magazine mg = magazine.GetComponent<Magazine>();
                 cs.assignedRoom = mg;
                 if (isSpec) mg.hasSpecialist = true;

@@ -18,6 +18,7 @@ public class CrewMember : MonoBehaviour
     // Movement
     private Vector3 startPos;
     private int direction;
+    public float speedMod;
 
     [Header("Job Variables")]
     public int multiplier;
@@ -32,6 +33,7 @@ public class CrewMember : MonoBehaviour
         startPos = transform.position;
         direction = 1;
         multiplier = 1;
+        speedMod = Random.Range(1, 1.8f);
     }
 
     private void Update()
@@ -63,7 +65,7 @@ public class CrewMember : MonoBehaviour
             direction = -1;
         }
 
-        transform.position = new Vector3(transform.position.x + (0.005f * direction), transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x + (0.005f * direction) * speedMod, transform.position.y, transform.position.z);
     }
 
     // Crew member performs a task associated with their role in the room they are assigned to

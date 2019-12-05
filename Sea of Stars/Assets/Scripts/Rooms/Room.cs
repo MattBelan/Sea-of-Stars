@@ -47,7 +47,12 @@ public class Room : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 newPos = transform.position;
-            newPos.y -= .25f;
+
+            if(roomName != "Bridge")
+            {
+                newPos.y -= .3f;
+            }
+
             player.transform.position = newPos;
             player.currRoom = roomName;
         }
