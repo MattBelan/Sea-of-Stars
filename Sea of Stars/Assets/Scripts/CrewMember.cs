@@ -63,7 +63,7 @@ public class CrewMember : MonoBehaviour
             direction = -1;
         }
 
-        transform.position = new Vector3(transform.position.x + (0.025f * direction), transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x + (0.005f * direction), transform.position.y, transform.position.z);
     }
 
     // Crew member performs a task associated with their role in the room they are assigned to
