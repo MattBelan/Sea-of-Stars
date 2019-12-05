@@ -34,7 +34,20 @@ public class CrewManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            foreach(GameObject cm in crew)
+            {
+                if (cm.activeSelf)
+                {
+                    cm.SetActive(false);
+                }
+                else
+                {
+                    cm.SetActive(true);
+                }
+            }
+        }
     }
 
     // Creates the initial crew

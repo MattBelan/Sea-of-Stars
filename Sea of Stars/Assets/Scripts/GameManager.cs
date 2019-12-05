@@ -28,10 +28,13 @@ public class GameManager : MonoBehaviour
     public GameObject map;
     public GameObject canvas;
 
+    public bool crewHidden;
+
     // Start is called before the first frame update
     void Start()
     {
         inCombat = true;
+        crewHidden = false;
 
         if (PlayerPrefs.GetFloat("InCombat") > 0)
         {
@@ -80,6 +83,8 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.M))
             {
+                crewHidden = !crewHidden;
+
                 //bring up map
                 if (map.activeSelf)
                 {
