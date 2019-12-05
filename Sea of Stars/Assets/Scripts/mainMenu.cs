@@ -68,7 +68,7 @@ public class mainMenu : MonoBehaviour
 
         //Resetting ship/enemy health and game progression
         PlayerPrefs.SetFloat("ShipHealth", 20);
-        PlayerPrefs.SetFloat("EnemyHealth", 10);
+        PlayerPrefs.SetFloat("EnemyHealth", 5);
         PlayerPrefs.SetFloat("CurrLevel", 1);
         PlayerPrefs.SetFloat("CurrNode", 0);
         PlayerPrefs.SetFloat("InCombat", 1);

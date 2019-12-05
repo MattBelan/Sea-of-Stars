@@ -46,7 +46,9 @@ public class Room : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            player.transform.position = transform.position;
+            Vector3 newPos = transform.position;
+            newPos.y -= .25f;
+            player.transform.position = newPos;
             player.currRoom = roomName;
         }
     }

@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
         {
             roomTextObj.GetComponent<Text>().text = "Current Room: " + player.currRoom;
             healthTextObj.GetComponent<Text>().text = "Health: " + ship.Health;
-            enemyHealthTextObj.GetComponent<Text>().text = "Health: " + enemy.Health;
+            enemyHealthTextObj.GetComponent<Text>().text = "Enemy Health: " + enemy.Health;
             stressTextObj.GetComponent<Text>().text = "Stress: " + ship.stress;
         }
 
