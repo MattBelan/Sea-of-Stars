@@ -8,6 +8,7 @@ public class CombatShip : CombatEntity
 {
     [Header("Managers")]
     public UIManager uiManager;
+    public DialogueManager dialogueManager;
 
     public GameObject therapyScreen;
 
@@ -48,6 +49,7 @@ public class CombatShip : CombatEntity
         SOSState = false;
 
         if (!uiManager) uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
+        if (!dialogueManager) dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
         if (!therapyScreen) therapyScreen = GameObject.Find("TherapyScreen");
     }
 

@@ -20,14 +20,6 @@ public class UIManager : MonoBehaviour
     public CombatShip ship;
     public CombatEntity enemy;
 
-    [Header("Dialogue Text Objects")]
-    public GameObject playerTextObj;
-    public GameObject weaponTextObj;
-    public GameObject magazineTextObj;
-    public GameObject galleyTextObj;
-    public GameObject storageTextObj;
-    public GameObject engineTextObj;
-
     [Header("Button Objects")]
     public GameObject sosButton;
     public bool showSOS;

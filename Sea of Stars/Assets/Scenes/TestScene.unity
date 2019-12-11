@@ -259,7 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91344c2deb1c9af4ba7b11a83a1554f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1528298242}
+  dialogueManager: {fileID: 1528298244}
   player: {fileID: 1027899899}
   roomName: Magazine
   combatScript: {fileID: 0}
@@ -468,7 +469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -245, y: 45}
+  m_AnchoredPosition: {x: 175, y: 19}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &88555823
@@ -547,7 +548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: -150}
+  m_AnchoredPosition: {x: -98, y: -154}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &117118481
@@ -1095,7 +1096,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafaecc21c2d51a46be24d9dd73ac697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1528298242}
+  dialogueManager: {fileID: 1528298244}
   player: {fileID: 1027899899}
   roomName: WeaponStation
   combatScript: {fileID: 0}
@@ -1616,6 +1618,7 @@ MonoBehaviour:
   - {fileID: 627998638}
   - {fileID: 306169337}
   uiManager: {fileID: 1528298241}
+  dialogueManager: {fileID: 1528298244}
   therapyScreen: {fileID: 0}
   rooms:
   - {fileID: 613089113}
@@ -3104,7 +3107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f0573ee4ce5104c9bec126d4ce92e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1528298242}
+  dialogueManager: {fileID: 1528298244}
   player: {fileID: 1027899899}
   roomName: Storage
   combatScript: {fileID: 0}
@@ -4124,7 +4128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 45}
+  m_AnchoredPosition: {x: -278, y: 19.000013}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900846035
@@ -4203,7 +4207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 310, y: 260}
+  m_AnchoredPosition: {x: -832, y: 266}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &901507686
@@ -4528,7 +4532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9455393d7ec63d346a2e8a777083ae87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1528298242}
+  dialogueManager: {fileID: 1528298244}
   player: {fileID: 1027899899}
   roomName: Bridge
   combatScript: {fileID: 0}
@@ -6032,7 +6037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062336d2e0717a54ea1496687f25dc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1528298242}
+  dialogueManager: {fileID: 1528298244}
   player: {fileID: 1027899899}
   roomName: EngineRoom
   combatScript: {fileID: 0}
@@ -6332,7 +6338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 410, y: -150}
+  m_AnchoredPosition: {x: -742, y: -154.00002}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338389049
@@ -7276,7 +7282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e01cc0909aeec458fabff31eb7b20e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1528298242}
+  dialogueManager: {fileID: 1528298244}
   player: {fileID: 1027899899}
   roomName: Galley
   combatScript: {fileID: 0}
@@ -7419,6 +7426,7 @@ GameObject:
   - component: {fileID: 1528298242}
   - component: {fileID: 1528298241}
   - component: {fileID: 1528298240}
+  - component: {fileID: 1528298244}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7470,12 +7478,6 @@ MonoBehaviour:
   player: {fileID: 1027899899}
   ship: {fileID: 303837004}
   enemy: {fileID: 630200727}
-  playerTextObj: {fileID: 901507684}
-  weaponTextObj: {fileID: 900846033}
-  magazineTextObj: {fileID: 117118479}
-  galleyTextObj: {fileID: 2085276400}
-  storageTextObj: {fileID: 88555821}
-  engineTextObj: {fileID: 1338389047}
   sosButton: {fileID: 1117715745}
   showSOS: 0
 --- !u!114 &1528298242
@@ -7517,6 +7519,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1528298244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528298239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c63e340a9299c042ae34ef42c9586e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTextObj: {fileID: 901507686}
+  weaponTextObj: {fileID: 900846035}
+  magazineTextObj: {fileID: 117118481}
+  galleyTextObj: {fileID: 2085276402}
+  storageTextObj: {fileID: 88555823}
+  engineTextObj: {fileID: 1338389049}
+  displayTimeSec: 10
 --- !u!1 &1557374167
 GameObject:
   m_ObjectHideFlags: 0
@@ -9584,7 +9605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 540, y: 45}
+  m_AnchoredPosition: {x: -708, y: 19.000013}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2085276402

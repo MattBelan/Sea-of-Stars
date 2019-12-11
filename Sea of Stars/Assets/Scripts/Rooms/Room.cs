@@ -8,6 +8,7 @@ public class Room : MonoBehaviour
 {
     [Header("Managers")]
     public GameManager gameManager;
+    public DialogueManager dialogueManager;
 
     public TestPlayerScript player;
     public string roomName;
@@ -26,6 +27,7 @@ public class Room : MonoBehaviour
     public virtual void Start()
     {
         if (!gameManager) gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (!dialogueManager) dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
 
         combatScript = GameObject.Find("Ship").GetComponent<CombatShip>();
         crew = new List<CrewMember>();
