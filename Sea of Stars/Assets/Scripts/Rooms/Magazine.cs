@@ -40,5 +40,11 @@ public class Magazine : Room
         bonusActive = true; // start timer
 
         combatScript.FireRate *= (1.5f * mult);
+
+        // Display an encouraging message if things are going well
+        if (combatScript.Health > 10 && combatScript.stress < 50 && bonusActive)
+        {
+            dialogueManager.EncouragingMessage("Magazine");
+        }
     }
 }

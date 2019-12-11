@@ -6,7 +6,9 @@ using UnityEngine;
  */
 public class CrewManager : MonoBehaviour
 {
-    // Attributes
+    // Attribute
+    public DialogueManager dialogueManager;
+
     public List<GameObject> crew;
     public List<GameObject> specialistCrew;
     public int crewTotal;
@@ -16,6 +18,7 @@ public class CrewManager : MonoBehaviour
     // ===== TODO: reimplement crewNames as a stack/queue =====
     private List<string> crewNames = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }; // Used to pick names when creating crew, uses List<> to remove names when used
     private string[] crewRoles = { "Quartermaster", "Cook", "Engineer", "Gunner", "Loader"};
+    private string[] roomNames = { "Storage", "Galley", "EngineRoom", "WeaponStations", "Magazine" };
 
     [Header("Room Obj Refs")]
     public GameObject storage;
@@ -27,6 +30,8 @@ public class CrewManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!dialogueManager) dialogueManager = GetComponent<DialogueManager>();
+
         // Recruit a crew member for each room at the start of the game
         RecruitStartingCrew();
     }
@@ -129,7 +134,10 @@ public class CrewManager : MonoBehaviour
             cScript.isSpecialist = false;
 
             crew.Add(cm);   // save ref in list
-        }        
+        }
+
+        // Display a message
+        dialogueManager.EncouragingMessage(roomNames[roleNum]); // order of room names corresponds to order of role names
 
         crewNames.RemoveAt(nameNum); // Don't use the same name for multiple crew memebers
     }

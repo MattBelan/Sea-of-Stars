@@ -48,5 +48,11 @@ public class EngineRoom : Room
         bonusActive = true; // start timer
 
         combatScript.Health += (2 * mult);
+
+        // Display an encouraging message if things are going well
+        if (combatScript.Health > 10 && combatScript.stress < 50 && bonusActive)
+        {
+            dialogueManager.EncouragingMessage("EngineRoom");
+        }
     }
 }

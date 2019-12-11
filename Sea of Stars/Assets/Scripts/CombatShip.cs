@@ -29,6 +29,13 @@ public class CombatShip : CombatEntity
 
     UnityEvent therapyEvent = new UnityEvent();
 
+    // Timers for messages
+    private float healthTimer;
+    private int healthSeconds; // time elapsed in seconds
+    private float stressTimer;
+    private int stressSeconds; // time elapsed in seconds
+    
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -47,6 +54,10 @@ public class CombatShip : CombatEntity
         therapyStartTime = 0;
         stress = 0;
         SOSState = false;
+        healthTimer = 0;
+        healthSeconds = 0;
+        stressTimer = 0;
+        stressSeconds = 0;
 
         if (!uiManager) uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
         if (!dialogueManager) dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
@@ -58,12 +69,26 @@ public class CombatShip : CombatEntity
     {
         base.Update();
 
+        // Update timers for messages
+        healthTimer += Time.deltaTime;
+        healthSeconds = (int)healthTimer % 60;
+        stressTimer += Time.deltaTime;
+        stressSeconds = (int)stressTimer % 60;
+
         Vector3 therapyPos;
         if(Health <= 2)
         {
             Debug.Log("Crisis event");
             SceneManager.LoadScene("SquareBreathing", LoadSceneMode.Single);
             Health += 4;
+        }
+
+        // Start displaying discouraged messages
+        if(Health <= 10 && healthSeconds > 15)
+        {
+            dialogueManager.DiscouragedMessage("EngineRoom");
+            healthTimer = 0;
+            healthSeconds = 0;
         }
 
         FireRate = 5 * (1 / rooms[3].roomModifier);
@@ -136,6 +161,14 @@ public class CombatShip : CombatEntity
             SOSState = true;
             uiManager.showSOS = true;
         }        
+
+        // Start displaying discouraged messages
+        if(stress > 50 && stressTimer > 20)
+        {
+            dialogueManager.DiscouragedMessage(""); // Display message at a random room
+            stressTimer = 0;
+            stressSeconds = 0;            
+        }
     }
 
     public void Repair(float val)

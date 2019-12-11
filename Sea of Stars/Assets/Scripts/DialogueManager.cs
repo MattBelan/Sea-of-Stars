@@ -15,8 +15,24 @@ public class DialogueManager : MonoBehaviour
     public Text storageTextObj;
     public Text engineTextObj;
 
-    private string[] encouragingMsg = {"Keep up the good work captain!", "Thanks for all you do!", "We know you'll bring us through", "Together we've got this covered!" };
-    private string[] discouragedMsg = {"That could have gone better...", "What are we going to do now?", "Welp, back to work"};
+    private string[] encouragingMsg = {
+        "Keep up the good work captain!",
+        "Thanks for all you do!",
+        "We know you'll bring us through.",
+        "Together we've got this covered!",
+        "We couldn't do this wihtout you!",
+        "Great work!" };
+    private string[] discouragedMsg = {
+        "That could have gone better...",
+        "What are we going to do now?",
+        "Welp, back to work",
+        "Setbacks are only temporary",
+        "Let's find a way to fix this",
+        "This is terrible!",
+        "Don't worry, we'll get through this",
+        "We just have to keep our heads up and press on"};
+
+    private List<Text> roomNames;
 
     Queue<Message> messageQueue;
 
@@ -45,6 +61,14 @@ public class DialogueManager : MonoBehaviour
     {
         messageQueue = new Queue<Message>();
         messageDisplayed = false;
+
+        roomNames = new List<Text>();
+
+        roomNames.Add(weaponTextObj);
+        roomNames.Add(magazineTextObj);
+        roomNames.Add(galleyTextObj);
+        roomNames.Add(storageTextObj);
+        roomNames.Add(engineTextObj);
     }
 
     // Update is called once per frame
@@ -55,6 +79,14 @@ public class DialogueManager : MonoBehaviour
             // Run the timer
             timer += Time.deltaTime;
             seconds = (int)timer % 60;
+
+            // After 15 seconds remove the message
+            if (seconds >= displayTimeSec)
+            {
+                lastText.text = "";
+                lastText = null;
+                messageDisplayed = false;
+            }
         }
         else if(messageDisplayed == false && messageQueue.Count > 0) // No message showing and messages are waiting
         {
@@ -69,14 +101,7 @@ public class DialogueManager : MonoBehaviour
             currentMsg.room.text = currentMsg.message;
 
             messageDisplayed = true;
-        }
-
-        // After 15 seconds remove the message
-        if(seconds >= displayTimeSec)
-        {
-            lastText = null;
-            messageDisplayed = false;
-        }
+        }        
     }
 
     // Displays a random message to encourage the player
@@ -107,13 +132,14 @@ public class DialogueManager : MonoBehaviour
     }
 
     // Helper Method: Picks the appropriate text object based upon the given string
+    // Picks a random room if room is not given
     private Text SelectRoom(string rm)
     {
         switch (rm)
         {
             case "Galley":
                 return galleyTextObj;
-            case "WeaponStation":
+            case "WeaponStations":
                 return weaponTextObj;
             case "Storage":
                 return storageTextObj;
@@ -122,7 +148,7 @@ public class DialogueManager : MonoBehaviour
             case "Magazine":
                 return magazineTextObj;
             default:
-                return null;
+                return roomNames[Random.Range(0, 4)];
         }
     }
 }
