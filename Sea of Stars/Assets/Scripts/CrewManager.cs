@@ -19,6 +19,7 @@ public class CrewManager : MonoBehaviour
     private List<string> crewNames = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }; // Used to pick names when creating crew, uses List<> to remove names when used
     private string[] crewRoles = { "Quartermaster", "Cook", "Engineer", "Gunner", "Loader"};
     private string[] roomNames = { "Storage", "Galley", "EngineRoom", "WeaponStations", "Magazine" };
+    private int newCrewIndex;
 
     [Header("Room Obj Refs")]
     public GameObject storage;
@@ -34,6 +35,8 @@ public class CrewManager : MonoBehaviour
 
         // Recruit a crew member for each room at the start of the game
         RecruitStartingCrew();
+
+        newCrewIndex = 0;
     }
 
     // Update is called once per frame
@@ -99,7 +102,6 @@ public class CrewManager : MonoBehaviour
 
         // Pick a random name and role for the crew member being added
         int nameNum = Random.Range(0, crewNames.Count - 1);
-        int roleNum = Random.Range(0, 4);
 
         cm = Instantiate(crewPrefab);    // Create gameobject
         cScript = cm.GetComponent<CrewMember>();
@@ -109,8 +111,8 @@ public class CrewManager : MonoBehaviour
 
         // Give name and role
         cScript.crewName = crewNames[nameNum];
-        cScript.role = crewRoles[roleNum];
-        cm.name = crewRoles[roleNum];
+        cScript.role = crewRoles[newCrewIndex];
+        cm.name = crewRoles[newCrewIndex];
 
         if (isSpecialist)
         {
@@ -137,9 +139,13 @@ public class CrewManager : MonoBehaviour
         }
 
         // Display a message
-        dialogueManager.EncouragingMessage(roomNames[roleNum]); // order of room names corresponds to order of role names
+        dialogueManager.CustomMessage(roomNames[newCrewIndex], "Don't worry captain, we're here to help!"); // order of room names corresponds to order of role names
 
         crewNames.RemoveAt(nameNum); // Don't use the same name for multiple crew memebers
+
+        newCrewIndex++;
+
+        if (newCrewIndex >= 4) newCrewIndex = 0;
     }
 
     // Moves a crewmember at the appropriate location and gives a reference to the room's script

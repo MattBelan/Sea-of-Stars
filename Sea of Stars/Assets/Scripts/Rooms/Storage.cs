@@ -36,7 +36,7 @@ public class Storage : Room
         gameManager.fuelCount += (5 * mult);
 
         // Display an encouraging message if things are going well
-        if (combatScript.Health > 10 && combatScript.stress < 50 && bonusActive)
+        if (combatScript.Health > 10 && combatScript.stress < 50 && bonusActive && dialogueManager.allowMessage)
         {
             dialogueManager.EncouragingMessage("Storage");
         }

@@ -30,21 +30,34 @@ public class DialogueManager : MonoBehaviour
         "Let's find a way to fix this",
         "This is terrible!",
         "Don't worry, we'll get through this",
-        "We just have to keep our heads up and press on"};
+        "We just have to keep our heads up and press on",
+        "This too shall pass."};
 
     private List<Text> roomNames;
 
-    Queue<Message> messageQueue;
+    private Queue<Message> messageQueue;
 
     public int displayTimeSec; // Duration in seconds that a messages should be displayed
-    private float timer;
-    private int seconds; // time elapsed in seconds
+    private int delayTimeSec; // duration to wait before allowing a new message to be added to the queue
 
-    private bool messageDisplayed;
-    private Text lastText; // last text object with a message displayed
+    private float timer;
+    private float delayTimer;
+
+    [Header("Timer Data")]
+    [SerializeField]
+    private int seconds;
+    [SerializeField]
+    private int delaySeconds;
+
+    public bool allowMessage;
+
+    [Header("Message Statuses")]
+    public bool messageDisplayed;
+    public Text lastText; // last text object with a message displayed
+    public Text lastCustomText;
 
     // Struct - contains a message and the text object where it should be displayed
-    struct Message
+    private struct Message
     {
         public Text room;
         public string message;
@@ -69,6 +82,12 @@ public class DialogueManager : MonoBehaviour
         roomNames.Add(galleyTextObj);
         roomNames.Add(storageTextObj);
         roomNames.Add(engineTextObj);
+
+        delayTimeSec = Random.Range(5, 12);
+        allowMessage = true;
+
+        lastText = null;
+        lastCustomText = null;
     }
 
     // Update is called once per frame
@@ -80,12 +99,17 @@ public class DialogueManager : MonoBehaviour
             timer += Time.deltaTime;
             seconds = (int)timer % 60;
 
-            // After 15 seconds remove the message
+            // After X seconds remove the message
             if (seconds >= displayTimeSec)
             {
-                lastText.text = "";
+                if(lastText != null) lastText.text = "";
+                if(lastCustomText != null) lastCustomText.text = "";
                 lastText = null;
+                lastCustomText = null;
                 messageDisplayed = false;
+
+                timer = 0;
+                seconds = 0;
             }
         }
         else if(messageDisplayed == false && messageQueue.Count > 0) // No message showing and messages are waiting
@@ -101,7 +125,22 @@ public class DialogueManager : MonoBehaviour
             currentMsg.room.text = currentMsg.message;
 
             messageDisplayed = true;
-        }        
+        }
+
+        // Delay timer
+        delayTimer += Time.deltaTime;
+        delaySeconds = (int)delayTimer % 60;
+
+        // Reset the delay and allow a new message to be queued
+        if(delaySeconds >= delayTimeSec)
+        {
+            allowMessage = true;
+            // Set a new delay time
+            delayTimeSec = Random.Range(5, 12);
+
+            delayTimer = 0;
+            delaySeconds = 0;
+        }
     }
 
     // Displays a random message to encourage the player
@@ -111,6 +150,8 @@ public class DialogueManager : MonoBehaviour
         Message newMsg = new Message(SelectRoom(room), encouragingMsg[Random.Range(0, encouragingMsg.Length)]);
         // Add to queue
         messageQueue.Enqueue(newMsg);
+
+        allowMessage = false;
     }
 
     // Displays a random message expressing discouragement
@@ -120,15 +161,17 @@ public class DialogueManager : MonoBehaviour
         Message newMsg = new Message(SelectRoom(room), discouragedMsg[Random.Range(0, discouragedMsg.Length)]);
         // Add to queue
         messageQueue.Enqueue(newMsg);
+
+        allowMessage = false;
     }
 
-    // Displays a custom message at 
+    // Displays a custom message at the given room without a delay
     public void CustomMessage(string room, string message)
     {
-        // Create message
-        Message newMsg = new Message(SelectRoom(room), message);
-        // Add to queue
-        messageQueue.Enqueue(newMsg);
+        lastCustomText = SelectRoom(room);
+        lastCustomText.text = message;
+
+        messageDisplayed = true;
     }
 
     // Helper Method: Picks the appropriate text object based upon the given string

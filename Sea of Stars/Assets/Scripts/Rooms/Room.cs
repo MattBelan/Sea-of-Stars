@@ -54,6 +54,10 @@ public class Room : MonoBehaviour
             {
                 newPos.y -= .3f;
             }
+            else
+            {
+                dialogueManager.CustomMessage("", "Where has the captain gone?");
+            }
 
             player.transform.position = newPos;
             player.currRoom = roomName;
