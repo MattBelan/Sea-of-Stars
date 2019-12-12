@@ -13,8 +13,13 @@ public class mainMenu : MonoBehaviour
     public GameObject TitleText;
     public GameObject NameGrabber;
     public InputField nameField;
+    public GameObject howtoPlayText;
+    public GameObject howtoPlayBTN;
+    public GameObject backtoMenuBTN;
+    public GameObject startIns;
     public bool nameEntered = false;
     public Image uiImage;
+    public GameObject startSound;
     // Start is called before the first frame update
     public void Start()
     {
@@ -22,6 +27,9 @@ public class mainMenu : MonoBehaviour
         {
             nameField = GetComponent<InputField>(); //Only sets this if the gameobject is the input, so it doesn't cause issues with the other buttons
         }
+
+        //startSound = GetComponent < AudioSource >("nameInput");
+        //startSound = GetComponentInChildren<AudioSource>();
         
     }
 
@@ -55,7 +63,10 @@ public class mainMenu : MonoBehaviour
         StartBTN.gameObject.SetActive(false);
         QuitBTN.gameObject.SetActive(false);
         TitleText.gameObject.SetActive(false); //Disables all UI and enables the name input field
+        howtoPlayBTN.gameObject.SetActive(false);
         NameGrabber.gameObject.SetActive(true);
+        startIns.gameObject.SetActive(true);
+        startSound.gameObject.SetActive(true);
 
         Debug.Log(playerName);
 
@@ -80,6 +91,26 @@ public class mainMenu : MonoBehaviour
 
             SceneManager.LoadScene(sceneIndex);
         }
+    }
+
+    public void HowtoPlay ()
+    {
+        StartBTN.gameObject.SetActive(false);
+        QuitBTN.gameObject.SetActive(false);
+        TitleText.gameObject.SetActive(false);
+        howtoPlayBTN.gameObject.SetActive(false);
+        howtoPlayText.gameObject.SetActive(true);
+        backtoMenuBTN.gameObject.SetActive(true);
+    }
+
+    public void HowtoPlayExit()
+    {
+        StartBTN.gameObject.SetActive(true);
+        QuitBTN.gameObject.SetActive(true);
+        TitleText.gameObject.SetActive(true);
+        howtoPlayBTN.gameObject.SetActive(true);
+        howtoPlayText.gameObject.SetActive(false);
+        backtoMenuBTN.gameObject.SetActive(false);
     }
 }
 
